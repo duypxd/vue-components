@@ -5,6 +5,7 @@ import "roboto-fontface/css/roboto/roboto-fontface.css";
 import "font-awesome/css/font-awesome.css";
 
 import "./plugins/vuetify";
+import "./plugins/filter";
 import router from "./router/";
 import store from "./store";
 

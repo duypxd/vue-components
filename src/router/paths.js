@@ -1,7 +1,7 @@
 import NotFound from "../components/error/NotFound";
 
 import Dashboard from "../views/dashboard/Home";
-import SlickGrid from "../views/slickGrid/Home";
+import Employees from "../views/employees/Home";
 import TimeLine from "../views/timeLine/Home";
 import Kanban from "../views/kanban/Home";
 import TaskBoard from "../views/taskBoard/Home";
@@ -30,9 +30,9 @@ export default [
     component: Dashboard
   },
   {
-    path: "/slick-grid",
-    name: "SlickGrid",
-    component: SlickGrid
+    path: "/employees",
+    name: "Employees",
+    component: Employees
   },
   {
     path: "/time-line",

@@ -9,6 +9,6 @@ Vue.filter("formatDateTimeUtc", day => {
 });
 
 Vue.filter("vnd", currency => {
-  return currency.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' });
+  return currency.toLocaleString("vi-VN", { style: "currency", currency: "VND" });
 });
 

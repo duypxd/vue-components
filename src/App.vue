@@ -63,11 +63,6 @@ export default {
   },
   computed: {
     ...mapGetters("theme", ["themeColor", "sideBarOption"])
-  },
-  watch: {
-    system(val) {
-      document.title = val.brandName;
-    }
   }
 };
 </script>

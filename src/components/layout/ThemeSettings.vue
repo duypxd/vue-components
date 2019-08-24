@@ -35,7 +35,7 @@
             <v-subheader class="px-1 my-2">Sidebar Option</v-subheader>
             <v-divider></v-divider>
             <div class="my-3">
-              <v-btn-toggle v-model="sideBarOption">
+              <v-btn-toggle v-model="sideBarOptionComputed">
                 <v-btn flat value="dark">Dark</v-btn>
                 <v-btn flat value="light">Light</v-btn>
               </v-btn-toggle>

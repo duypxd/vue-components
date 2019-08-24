@@ -1,7 +1,10 @@
-import Vue from "vue"
-import Vuetify from "vuetify/lib"
-import "../theme/default.styl"
+import Vue from "vue";
+import Vuetify from "vuetify/lib";
+import "../theme/default.styl";
 Vue.use(Vuetify, {
+  icons: {
+    iconfont: "md", // 'mdi' || 'mdiSvg' || 'md' || 'fa' || 'fa4'
+  },
   theme: {
     primary: "#ee44aa",
     secondary: "#424242",

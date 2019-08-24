@@ -59,8 +59,7 @@ export default {
   },
   data() {
     return {
-      drag: false,
-      id: 1
+      drag: false
     };
   },
   methods: {
@@ -115,6 +114,11 @@ export default {
               .classList.remove("sorting");
           }
           var sorted = tableRows[0].querySelectorAll("th");
+          const columns = JSON.parse(JSON.stringify(_self.headers));
+          const newIndex = event.newIndex;
+          const oldIndex = event.oldIndex;
+          const result = _self.array_move(columns, oldIndex, newIndex);
+          _self.$emit("onEndDragColumns", result);
         },
         animation: 200,
         group: "columns",
@@ -123,7 +127,7 @@ export default {
       });
     },
     setNewPos(oldPos, newPos, cells, newIndex, thisRow) {
-      setTimeout(function() {
+      setTimeout(() => {
         oldPos.classList.remove("sort-left", "sort-right");
         cells[newIndex].classList.remove("sort-left", "sort-right");
         thisRow.insertBefore(oldPos, newPos);
@@ -149,7 +153,7 @@ export default {
           const newIndex = event.newIndex;
           const oldIndex = event.oldIndex;
           const result = _self.array_move(_self.items, oldIndex, newIndex);
-          // _self.$emit("dragAndDropRows", result);
+          _self.$emit("dragAndDropRows", result);
         },
         animation: 200,
         group: "rows",
@@ -162,6 +166,10 @@ export default {
     }
   },
   mounted() {
+    this.dragAndDropRows();
+    this.dragAndDropColumn();
+  },
+  updated() {
     this.dragAndDropRows();
     this.dragAndDropColumn();
   }

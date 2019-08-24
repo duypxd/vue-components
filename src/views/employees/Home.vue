@@ -4,7 +4,7 @@
       <span class="headline">List Employees</span>
     </v-flex>
     <v-flex xs12>
-      <TableEmployees :headers="headers" :items="dataEmployees" />
+      <TableEmployees :headers="headers" :items="dataEmployees" @dragAndDropRows="dragAndDropRows" />
     </v-flex>
   </v-layout>
 </template>
@@ -27,7 +27,7 @@ export default {
     ...mapGetters("employees", ["dataEmployees"])
   },
   methods: {
-    ...mapActions("employees", ["getDataEmployees"])
+    ...mapActions("employees", ["getDataEmployees", "dragAndDropRows"])
   },
   mounted() {
     this.getDataEmployees();

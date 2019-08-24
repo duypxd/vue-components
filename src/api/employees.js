@@ -5,6 +5,12 @@ async function getDataEmployeesFromApi() {
   return dataEmployees;
 }
 
+async function dragAndDropRows(req) {
+  await sleep();
+  return req;
+}
+
 export default {
-  getDataEmployeesFromApi
+  getDataEmployeesFromApi,
+  dragAndDropRows
 }

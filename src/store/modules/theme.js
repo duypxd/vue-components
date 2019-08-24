@@ -2,12 +2,12 @@ import Cookies from "js-cookie";
 
 const state = {
   themeColor: Cookies.getJSON("themeColor") || "indigo",
-  sideBarOption: Cookies.getJSON("sideBarOption") || "light",
+  sideBarOptionColor: Cookies.getJSON("sideBarOptionColor") || "light"
 };
 
 const getters = {
   themeColor: state => state.themeColor,
-  sideBarOption: state => state.sideBarOptions
+  sideBarOptionColor: state => state.sideBarOptionColor
 };
 
 const actions = {};
@@ -17,9 +17,9 @@ const mutations = {
     state.themeColor = color;
     Cookies.set("themeColor", color);
   },
-  setSideBarOption(state, option) {
-    state.sideBarOption = option;
-    Cookies.set("sideBarOption", option);
+  setSideBarOptionColor(state, option) {
+    state.sideBarOptionColor = option;
+    Cookies.set("sideBarOptionColor", option);
   }
 };
 

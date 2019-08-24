@@ -2,9 +2,9 @@
   <VDataTableExtend
     :headers="headers"
     :items="items"
-    :total-items="totals"
-    :rows-per-page-items="[rowsPerPage]"
-    :pagination="pagination"
+    :server-items-length="totals"
+    :items-per-page="rowsPerPage"
+    :options="pagination"
     @update:pagination="updatePagination"
     class="elevation-1 c-table"
     ref="slicktable"
@@ -19,10 +19,12 @@
         </th>
       </tr>
     </template>
-    <template slot="items" slot-scope="props">
-      <tr :key="props.item.id">
-        <slot v-for="column in headers" name="cell" :column="column" :dataRow="props.item"></slot>
-      </tr>
+    <template v-slot:body="{ items }">
+      <tbody>
+        <tr v-for="dataRow in items" :key="dataRow.id">
+          <slot v-for="column in headers" name="cell" :column="column" :dataRow="dataRow"></slot>
+        </tr>
+      </tbody>
     </template>
     <template slot="actions-prepend">
       <slot name="actions-prepend"></slot>

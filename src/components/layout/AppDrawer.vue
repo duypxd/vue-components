@@ -46,7 +46,7 @@ export default {
 </script>
 
 <style lang="stylus">
-// @import '../../node_modules/vuetify/src/stylus/settings/_elevations.styl';
+// @import '../../node_modules/vuetify/src/styles/settings/_elevations.scss';
 #appDrawer {
   overflow: hidden;
 

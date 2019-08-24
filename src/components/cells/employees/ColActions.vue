@@ -7,5 +7,5 @@ export default {
     dataRow: Object,
     column: Object
   }
-}
+};
 </script>

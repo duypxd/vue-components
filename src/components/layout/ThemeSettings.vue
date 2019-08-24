@@ -36,8 +36,8 @@
             <v-divider></v-divider>
             <div class="my-3">
               <v-btn-toggle v-model="sideBarOptionComputed">
-                <v-btn flat value="dark">Dark</v-btn>
-                <v-btn flat value="light">Light</v-btn>
+                <v-btn value="dark">Dark</v-btn>
+                <v-btn value="light">Light</v-btn>
               </v-btn-toggle>
             </div>
           </div>
@@ -48,92 +48,21 @@
 </template>
 
 <script>
-import colors from "vuetify/es5/util/colors";
+import colors from "vuetify/lib/util/colors";
 import { mapMutations, mapGetters } from "vuex";
+import { themeColors } from "../../config";
 export default {
   data() {
     return {
-      colors: colors
+      colors,
+      themeColors
     };
   },
   computed: {
     themeColorOptions() {
-      return [
-        {
-          key: "blue",
-          value: {
-            sideNav: "blue",
-            mainNav: "blue",
-            sideManu: "white"
-          }
-        },
-        {
-          key: "teal",
-          value: {
-            sideNav: "teal",
-            mainNav: "teal",
-            sideManu: "white"
-          }
-        },
-        {
-          key: "red",
-          value: {
-            sideNav: "red",
-            mainNav: "red",
-            sideManu: "white"
-          }
-        },
-        {
-          key: "orange",
-          value: {
-            sideNav: "orange",
-            mainNav: "orange",
-            sideManu: "white"
-          }
-        },
-        {
-          key: "purple",
-          value: {
-            sideNav: "purple",
-            mainNav: "purple",
-            sideManu: "white"
-          }
-        },
-        {
-          key: "indigo",
-          value: {
-            sideNav: "indigo",
-            mainNav: "indigo",
-            sideManu: "white"
-          }
-        },
-        {
-          key: "cyan",
-          value: {
-            sideNav: "cyan",
-            mainNav: "cyan",
-            sideManu: "white"
-          }
-        },
-        {
-          key: "pink",
-          value: {
-            sideNav: "pink",
-            mainNav: "pink",
-            sideManu: "white"
-          }
-        },
-        {
-          key: "green",
-          value: {
-            sideNav: "green",
-            mainNav: "green",
-            sideManu: "white"
-          }
-        }
-      ];
+      return this.themeColors;
     },
-    ...mapGetters("theme", ["themeColor", "sideBarOption"]),
+    ...mapGetters("theme", ["themeColor", "sideBarOptionColor"]),
     themeColorComputed: {
       get() {
         return this.themeColor;
@@ -145,16 +74,16 @@ export default {
     },
     sideBarOptionComputed: {
       get() {
-        return this.sideBarOption;
+        return this.sideBarOptionColor;
       },
       set(val) {
-        this.setSideBarOption(val);
+        this.setSideBarOptionColor(val);
         this.$vuetify.dark = val === "dark";
       }
     }
   },
   methods: {
-    ...mapMutations("theme", ["setThemeColor", "setSideBarOption"])
+    ...mapMutations("theme", ["setThemeColor", "setSideBarOptionColor"])
   }
 };
 </script>

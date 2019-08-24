@@ -1,14 +1,14 @@
 <template>
   <div>
     <v-list dense expand>
-      <v-list-tile v-for="(v , i) in items" :key="i" :to="v.path">
-        <v-list-tile-action>
+      <v-list-item ripple="ripple" rel="noopener" v-for="(v , i) in items" :key="i" :to="v.path">
+        <v-list-item-action>
           <v-icon>{{v.icon}}</v-icon>
-        </v-list-tile-action>
-        <v-list-tile-content>
-          <v-list-tile-title>{{v.name}}</v-list-tile-title>
-        </v-list-tile-content>
-      </v-list-tile>
+        </v-list-item-action>
+        <v-list-item-content>
+          <v-list-item-title>{{v.name}}</v-list-item-title>
+        </v-list-item-content>
+      </v-list-item>
     </v-list>
   </div>
 </template>

@@ -1,9 +1,9 @@
 <template>
   <div id="appRoot">
-    <template v-if="!$route.meta.public">
+    <template>
       <v-app id="inspire" class="app">
         <AppDrawer class="app--drawer" />
-        <AppToolbar @openThemeSettings="openThemeSettings" class="app--toolbar" />
+        <AppToolbar @openThemeSettings="openThemeSettings" />
         <v-content>
           <div class="page-wrapper">
             <router-view></router-view>
@@ -21,20 +21,13 @@
         </v-navigation-drawer>
       </v-app>
     </template>
-    <template v-else>
-      <transition>
-        <keep-alive>
-          <router-view :key="$route.fullpath"></router-view>
-        </keep-alive>
-      </transition>
-    </template>
   </div>
 </template>
 <script>
 import AppDrawer from "./components/layout/AppDrawer";
 import AppToolbar from "./components/layout/AppToolbar";
 import ThemeSettings from "./components/layout/ThemeSettings";
-import colors from "vuetify/es5/util/colors";
+import colors from "vuetify/lib/util/colors";
 
 import { mapGetters } from "vuex";
 export default {
@@ -46,14 +39,12 @@ export default {
   data() {
     return {
       expanded: true,
-      rightDrawer: false
+      rightDrawer: false,
+      colors
     };
   },
-
-  created() {
-    window.getApp = this;
-    this.$vuetify.theme.primary = colors[this.themeColor].base;
-    this.$vuetify.dark = this.sideBarOption === "dark";
+  computed: {
+    ...mapGetters("theme", ["themeColor", "sideBarOptionColor"])
   },
   methods: {
     openThemeSettings() {
@@ -61,8 +52,10 @@ export default {
       this.rightDrawer = !this.rightDrawer;
     }
   },
-  computed: {
-    ...mapGetters("theme", ["themeColor", "sideBarOption"])
+  created() {
+    window.getApp = this;
+    this.$vuetify.theme.primary = this.colors[this.themeColor].base;
+    this.$vuetify.dark = this.sideBarOptionColor === "dark";
   }
 };
 </script>

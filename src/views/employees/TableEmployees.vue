@@ -7,6 +7,7 @@
       :totals="items.length"
       :rowsPerPage="20"
       :pagination.sync="pagination"
+      @dragAndDropRows="resp => $emit('dragAndDropRows', resp)"
     >
       <template slot="cell" slot-scope="props">
         <component

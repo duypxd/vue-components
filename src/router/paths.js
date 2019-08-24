@@ -1,5 +1,14 @@
 import NotFound from "../components/error/NotFound";
-import HomeProject from "../views/HomeProject/Home";
+
+import Dashboard from "../views/dashboard/Home";
+import SlickGrid from "../views/slickGrid/Home";
+import TimeLine from "../views/timeLine/Home";
+import Kanban from "../views/kanban/Home";
+import TaskBoard from "../views/taskBoard/Home";
+import Todos from "../views/todos/Home";
+import FilesUpload from "../views/filesUpload/Home";
+import Messages from "../views/messages/Home";
+import Report from "../views/report/Home";
 
 export default [
   {
@@ -9,14 +18,55 @@ export default [
   },
   {
     path: "/",
-    name: "HomeProject",
-    component: HomeProject
-  },
-  {
-    path: "/",
     name: "Root",
     redirect: {
-      name: "HomeProject"
+      name: "Dashboard"
     }
-  }
+  },
+  //List Menu router
+  {
+    path: "/dashboard",
+    name: "Dashboard",
+    component: Dashboard
+  },
+  {
+    path: "/slick-grid",
+    name: "SlickGrid",
+    component: SlickGrid
+  },
+  {
+    path: "/time-line",
+    name: "TimeLine",
+    component: TimeLine
+  },
+  {
+    path: "/kan-ban",
+    name: "Kanban",
+    component: Kanban
+  },
+  {
+    path: "/task-board",
+    name: "TaskBoard",
+    component: TaskBoard
+  },
+  {
+    path: "/todo-list",
+    name: "Todos",
+    component: Todos
+  },
+  {
+    path: "/files-drag-drop",
+    name: "FilesUpload",
+    component: FilesUpload
+  },
+  {
+    path: "/chat-message",
+    name: "Messages",
+    component: Messages
+  },
+  {
+    path: "/report",
+    name: "Report",
+    component: Report
+  },
 ];

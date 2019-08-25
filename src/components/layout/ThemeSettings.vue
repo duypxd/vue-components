@@ -69,11 +69,8 @@ export default {
       },
       set(val) {
         this.setThemeColor(val);
-        if (this.$vuetify.theme.dark) {
-          this.$vuetify.theme.themes.dark.primary = this.colors[val].base;
-        } else {
-          this.$vuetify.theme.themes.light.primary = this.colors[val].base;
-        }
+        this.$vuetify.theme.themes.dark.primary = this.colors[val].base;
+        this.$vuetify.theme.themes.light.primary = this.colors[val].base;
       }
     },
     isDarkComputed: {

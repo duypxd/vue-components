@@ -1,6 +1,6 @@
 # vue-components
 
-See [Demo](https://xduy-vue-demo.netlify.com/).
+### See [Demo](https://xduy-vue-demo.netlify.com/).
 
 ## Project setup
 
@@ -31,7 +31,3 @@ yarn run test
 ```
 yarn run lint
 ```
-
-### Customize configuration
-
-See [Configuration Reference](https://cli.vuejs.org/config/).

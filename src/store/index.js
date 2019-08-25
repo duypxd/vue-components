@@ -5,6 +5,7 @@ import theme from "./modules/theme";
 
 //import modules
 import employees from "./modules/employees";
+import timeline from "./modules/timeline";
 
 Vue.use(Vuex);
 
@@ -22,7 +23,8 @@ export default new Vuex.Store({
   },
   modules: {
     theme,
-    employees
+    employees,
+    timeline
   },
   strict: debug,
   plugins: debug ? [createLogger()] : []

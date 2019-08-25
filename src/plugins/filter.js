@@ -8,6 +8,13 @@ Vue.filter("formatDateTimeUtc", day => {
   return moment(day).format("DD/MM/YYYY HH:mm:ss");
 });
 
+Vue.filter("formatDaysUtc", day => {
+  if (typeof day === "string") {
+    return moment.utc(day).local().format("DD/MM/YYYY")
+  }
+  return moment(day).format("DD/MM/YYYY");
+});
+
 Vue.filter("vnd", currency => {
   return currency.toLocaleString("vi-VN", { style: "currency", currency: "VND" });
 });

@@ -3,7 +3,6 @@
     id="appDrawer"
     :mini-variant.sync="mini"
     fixed
-    :dark="$vuetify.dark"
     app
     v-model="drawer"
     width="260"
@@ -12,10 +11,7 @@
       <img src="../../assets/logo.png" alt="vue-components" height="36" />
       <v-toolbar-title class="ml-0 pl-3">Vue-Components</v-toolbar-title>
     </v-toolbar>
-    <vue-perfect-scrollbar
-      class="drawer-menu--scroll"
-      :settings="scrollSettings"
-    >
+    <vue-perfect-scrollbar class="drawer-menu--scroll" :settings="scrollSettings">
       <MenuRouter />
     </vue-perfect-scrollbar>
   </v-navigation-drawer>
@@ -26,7 +22,6 @@ import MenuRouter from "./MenuRouter";
 import { mapGetters, mapActions } from "vuex";
 
 export default {
-  name: "app-drawer",
   components: {
     VuePerfectScrollbar,
     MenuRouter

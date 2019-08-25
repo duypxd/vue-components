@@ -43,4 +43,4 @@ export const dataEmployees = [
     dateOfJoinCompany: new Date().toISOString(),
     totalsProjectJoin: 2
   }
-]
+];

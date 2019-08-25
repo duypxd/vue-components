@@ -2,11 +2,14 @@ import api from "../../api/employees";
 
 const state = {
   dataEmployees: []
-}
+};
 
 const getters = {
-  dataEmployees: state => state.dataEmployees
-}
+  dataEmployees: state => {
+    const resp = JSON.parse(JSON.stringify(state.dataEmployees));
+    return resp;
+  }
+};
 
 const actions = {
   async getDataEmployees({ commit }) {
@@ -15,7 +18,7 @@ const actions = {
   async dragAndDropRows({ commit }, req) {
     commit("dragAndDropRows", await api.dragAndDropRows(req));
   }
-}
+};
 
 const mutations = {
   getDataEmployees(state, response) {
@@ -24,7 +27,7 @@ const mutations = {
   dragAndDropRows(state, response) {
     state.dataEmployees = response;
   }
-}
+};
 
 export default {
   namespaced: true,
@@ -32,4 +35,4 @@ export default {
   getters,
   mutations,
   actions
-}
+};

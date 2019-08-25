@@ -7,7 +7,7 @@
     :options="pagination"
     @update:pagination="updatePagination"
     class="elevation-1 c-table"
-    ref="slicktable"
+    ref="extendSlick"
     :hideActions="hideActions"
     :idGroup="idGroup"
     :group="group"
@@ -22,7 +22,12 @@
     <template v-slot:body="{ items }">
       <tbody>
         <tr v-for="dataRow in items" :key="dataRow.id">
-          <slot v-for="column in headers" name="cell" :column="column" :dataRow="dataRow"></slot>
+          <slot
+            v-for="column in headers"
+            name="cell"
+            :column="column"
+            :dataRow="dataRow"
+          ></slot>
         </tr>
       </tbody>
     </template>
@@ -69,12 +74,12 @@ export default {
       this.$emit("update:pagination", pagination);
     },
     dragAndDropColumn() {
-      var tableColumn = this.$refs.slicktable.$el.querySelectorAll("tr")[0];
+      var tableColumn = this.$refs.extendSlick.$el.querySelectorAll("tr")[0];
       var _self = this;
       tableColumn.style.cursor = "move";
       new Sortable(tableColumn, {
         onStart(event) {
-          const tableRows = _self.$refs.slicktable.$el.querySelectorAll("tr");
+          const tableRows = _self.$refs.extendSlick.$el.querySelectorAll("tr");
           for (var i = 1; i < tableRows.length; i++) {
             tableRows[i]
               .querySelectorAll("td")
@@ -82,7 +87,7 @@ export default {
           }
         },
         onChange(event) {
-          const tableRows = _self.$refs.slicktable.$el.querySelectorAll("tr");
+          const tableRows = _self.$refs.extendSlick.$el.querySelectorAll("tr");
           for (var i = 1; i < tableRows.length; i++) {
             var thisRow = tableRows[i];
             var oldPos = thisRow.querySelector(".sorting");
@@ -109,7 +114,7 @@ export default {
           }
         },
         onEnd(event) {
-          const tableRows = _self.$refs.slicktable.$el.querySelectorAll("tr");
+          const tableRows = _self.$refs.extendSlick.$el.querySelectorAll("tr");
           for (var i = 1; i < tableRows.length; i++) {
             tableRows[i]
               .querySelector("td.sorting")
@@ -148,7 +153,7 @@ export default {
       return arr;
     },
     dragAndDropRows() {
-      const thisRef = this.$refs.slicktable;
+      const thisRef = this.$refs.extendSlick;
       const tbody = thisRef.$el.getElementsByTagName("tbody")[0];
       if (!tbody) return;
       const _self = this;

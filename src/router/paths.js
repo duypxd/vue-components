@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import NotFound from "../components/error/NotFound";
 
 import Dashboard from "../views/dashboard/Home";
@@ -68,5 +69,5 @@ export default [
     path: "/report",
     name: "Report",
     component: Report
-  },
+  }
 ];

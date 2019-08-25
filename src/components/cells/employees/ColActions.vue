@@ -1,5 +1,5 @@
 <template>
-  <td>Actions</td>
+  <td>Actions {{ dataRow.id }}</td>
 </template>
 <script>
 export default {

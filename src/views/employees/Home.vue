@@ -15,22 +15,22 @@ import TableEmployees from "./TableEmployees";
 import { headersTableEmployees } from "../../config";
 
 export default {
+  components: {
+    TableEmployees
+  },
   data() {
     return {
       headers: headersTableEmployees
     };
   },
-  components: {
-    TableEmployees
-  },
   computed: {
     ...mapGetters("employees", ["dataEmployees"])
   },
-  methods: {
-    ...mapActions("employees", ["getDataEmployees", "dragAndDropRows"])
-  },
   mounted() {
     this.getDataEmployees();
+  },
+  methods: {
+    ...mapActions("employees", ["getDataEmployees", "dragAndDropRows"])
   }
 };
 </script>

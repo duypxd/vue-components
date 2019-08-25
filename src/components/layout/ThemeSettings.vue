@@ -24,8 +24,14 @@
                   <span class="overlay">
                     <span class="material-icons">check</span>
                   </span>
-                  <span class="color-option--item--header sideNav" :class="option.value.sideNav"></span>
-                  <span class="color-option--item--header mainNav" :class="option.value.mainNav"></span>
+                  <span
+                    class="color-option--item--header sideNav"
+                    :class="option.value.sideNav"
+                  ></span>
+                  <span
+                    class="color-option--item--header mainNav"
+                    :class="option.value.mainNav"
+                  ></span>
                   <span class="sideMenu" :class="option.value.sideManu"></span>
                 </span>
               </label>

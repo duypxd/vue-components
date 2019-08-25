@@ -12,7 +12,10 @@
       <img src="../../assets/logo.png" alt="vue-components" height="36" />
       <v-toolbar-title class="ml-0 pl-3">Vue-Components</v-toolbar-title>
     </v-toolbar>
-    <vue-perfect-scrollbar class="drawer-menu--scroll" :settings="scrollSettings">
+    <vue-perfect-scrollbar
+      class="drawer-menu--scroll"
+      :settings="scrollSettings"
+    >
       <MenuRouter />
     </vue-perfect-scrollbar>
   </v-navigation-drawer>

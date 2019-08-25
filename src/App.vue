@@ -1,40 +1,31 @@
 <template>
-  <div id="appRoot">
-    <template v-if="!$route.meta.public">
-      <v-app id="inspire" class="app">
-        <AppDrawer class="app--drawer" />
-        <AppToolbar @openThemeSettings="openThemeSettings" class="app--toolbar" />
-        <v-content>
-          <div class="page-wrapper">
-            <router-view></router-view>
-          </div>
-        </v-content>
-        <v-navigation-drawer
-          class="setting-drawer"
-          temporary
-          right
-          v-model="rightDrawer"
-          hide-overlay
-          fixed
-        >
-          <ThemeSettings />
-        </v-navigation-drawer>
-      </v-app>
-    </template>
-    <template v-else>
-      <transition>
-        <keep-alive>
-          <router-view :key="$route.fullpath"></router-view>
-        </keep-alive>
-      </transition>
-    </template>
-  </div>
+  <v-app id="inspire" dark>
+    <v-container fluid px-5>
+      <AppDrawer class="app--drawer" />
+      <AppToolbar @openThemeSettings="openThemeSettings" />
+      <v-content>
+        <div class="page-wrapper">
+          <router-view></router-view>
+        </div>
+      </v-content>
+      <v-navigation-drawer
+        class="setting-drawer"
+        temporary
+        right
+        v-model="rightDrawer"
+        hide-overlay
+        fixed
+      >
+        <ThemeSettings />
+      </v-navigation-drawer>
+    </v-container>
+  </v-app>
 </template>
 <script>
 import AppDrawer from "./components/layout/AppDrawer";
 import AppToolbar from "./components/layout/AppToolbar";
 import ThemeSettings from "./components/layout/ThemeSettings";
-import colors from "vuetify/es5/util/colors";
+import colors from "vuetify/lib/util/colors";
 
 import { mapGetters } from "vuex";
 export default {
@@ -46,14 +37,12 @@ export default {
   data() {
     return {
       expanded: true,
-      rightDrawer: false
+      rightDrawer: false,
+      colors
     };
   },
-
-  created() {
-    window.getApp = this;
-    this.$vuetify.theme.primary = colors[this.themeColor].base;
-    this.$vuetify.dark = this.sideBarOption === "dark";
+  computed: {
+    ...mapGetters("theme", ["themeColor", "isDark"])
   },
   methods: {
     openThemeSettings() {
@@ -61,8 +50,10 @@ export default {
       this.rightDrawer = !this.rightDrawer;
     }
   },
-  computed: {
-    ...mapGetters("theme", ["themeColor", "sideBarOption"])
+  created() {
+    window.getApp = this;
+    this.$vuetify.theme.themes.dark.primary = this.colors[this.themeColor].base;
+    this.$vuetify.theme.dark = this.isDark === "dark";
   }
 };
 </script>

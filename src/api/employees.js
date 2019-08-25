@@ -2,7 +2,7 @@ import { sleep } from "./base";
 import { dataEmployees } from "../mock-data/data-employees";
 async function getDataEmployeesFromApi() {
   await sleep();
-  return dataEmployees;
+  return await dataEmployees;
 }
 
 async function dragAndDropRows(req) {

@@ -3,7 +3,6 @@
     id="appDrawer"
     :mini-variant.sync="mini"
     fixed
-    :dark="$vuetify.dark"
     app
     v-model="drawer"
     width="260"
@@ -23,7 +22,6 @@ import MenuRouter from "./MenuRouter";
 import { mapGetters, mapActions } from "vuex";
 
 export default {
-  name: "app-drawer",
   components: {
     VuePerfectScrollbar,
     MenuRouter
@@ -46,7 +44,7 @@ export default {
 </script>
 
 <style lang="stylus">
-// @import '../../node_modules/vuetify/src/stylus/settings/_elevations.styl';
+// @import '../../node_modules/vuetify/src/styles/settings/_elevations.scss';
 #appDrawer {
   overflow: hidden;
 

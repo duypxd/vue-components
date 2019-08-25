@@ -1,5 +1,5 @@
 <template>
-  <td>{{dataRow.dateOfJoinCompany | formatDateTimeUtc}}</td>
+  <td>{{ dataRow.dateOfJoinCompany | formatDateTimeUtc }}</td>
 </template>
 <script>
 export default {

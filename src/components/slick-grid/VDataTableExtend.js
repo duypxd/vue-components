@@ -1,5 +1,5 @@
-import { VDataTable } from "vuetify/es5/components/VDataTable";
-import VCheckbox from "vuetify/es5/components/VCheckbox";
+import { VDataTable } from "vuetify/lib/components/VDataTable";
+import VCheckbox from "vuetify/lib/components/VCheckbox";
 export default {
   extends: VDataTable,
   data() {
@@ -27,7 +27,7 @@ export default {
           props: {
             dark: this.dark,
             light: this.light,
-            color: this.selectAll === true ? '' : this.selectAll,
+            color: this.selectAll === true ? "" : this.selectAll,
             hideDetails: true,
             inputValue: this.everyItem,
             indeterminate: this.indeterminate

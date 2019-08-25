@@ -2,12 +2,12 @@
   <VDataTableExtend
     :headers="headers"
     :items="items"
-    :total-items="totals"
-    :rows-per-page-items="[rowsPerPage]"
-    :pagination="pagination"
+    :server-items-length="totals"
+    :items-per-page="rowsPerPage"
+    :options="pagination"
     @update:pagination="updatePagination"
     class="elevation-1 c-table"
-    ref="slicktable"
+    ref="extendSlick"
     :hideActions="hideActions"
     :idGroup="idGroup"
     :group="group"
@@ -19,10 +19,17 @@
         </th>
       </tr>
     </template>
-    <template slot="items" slot-scope="props">
-      <tr :key="props.item.id">
-        <slot v-for="column in headers" name="cell" :column="column" :dataRow="props.item"></slot>
-      </tr>
+    <template v-slot:body="{ items }">
+      <tbody>
+        <tr v-for="dataRow in items" :key="dataRow.id">
+          <slot
+            v-for="column in headers"
+            name="cell"
+            :column="column"
+            :dataRow="dataRow"
+          ></slot>
+        </tr>
+      </tbody>
     </template>
     <template slot="actions-prepend">
       <slot name="actions-prepend"></slot>
@@ -67,21 +74,21 @@ export default {
       this.$emit("update:pagination", pagination);
     },
     dragAndDropColumn() {
-      var tableColumn = this.$refs.slicktable.$el.querySelectorAll("tr")[0];
+      var tableColumn = this.$refs.extendSlick.$el.querySelectorAll("tr")[0];
       var _self = this;
       tableColumn.style.cursor = "move";
       new Sortable(tableColumn, {
         onStart(event) {
-          const tableRows = _self.$refs.slicktable.$el.querySelectorAll("tr");
-          for (let i = 3; i < tableRows.length; i++) {
+          const tableRows = _self.$refs.extendSlick.$el.querySelectorAll("tr");
+          for (var i = 1; i < tableRows.length; i++) {
             tableRows[i]
               .querySelectorAll("td")
               [event.oldIndex].classList.add("sorting");
           }
         },
         onChange(event) {
-          const tableRows = _self.$refs.slicktable.$el.querySelectorAll("tr");
-          for (let i = 3; i < tableRows.length; i++) {
+          const tableRows = _self.$refs.extendSlick.$el.querySelectorAll("tr");
+          for (var i = 1; i < tableRows.length; i++) {
             var thisRow = tableRows[i];
             var oldPos = thisRow.querySelector(".sorting");
             var newPos = thisRow.querySelectorAll("td")[event.newIndex];
@@ -107,17 +114,19 @@ export default {
           }
         },
         onEnd(event) {
-          const tableRows = _self.$refs.slicktable.$el.querySelectorAll("tr");
-          for (var i = 3; i < tableRows.length; i++) {
+          const tableRows = _self.$refs.extendSlick.$el.querySelectorAll("tr");
+          for (var i = 1; i < tableRows.length; i++) {
             tableRows[i]
               .querySelector("td.sorting")
               .classList.remove("sorting");
           }
           var sorted = tableRows[0].querySelectorAll("th");
-          const columns = JSON.parse(JSON.stringify(_self.headers));
-          const newIndex = event.newIndex;
-          const oldIndex = event.oldIndex;
-          const result = _self.array_move(columns, oldIndex, newIndex);
+          const result = [];
+          for (var i = 0; i < sorted.length; i++) {
+            var item = sorted[i];
+            var resp = _self.headers.find(x => x.text === item.textContent);
+            result.push(resp);
+          }
           _self.$emit("onEndDragColumns", result);
         },
         animation: 200,
@@ -144,7 +153,7 @@ export default {
       return arr;
     },
     dragAndDropRows() {
-      const thisRef = this.$refs.slicktable;
+      const thisRef = this.$refs.extendSlick;
       const tbody = thisRef.$el.getElementsByTagName("tbody")[0];
       if (!tbody) return;
       const _self = this;

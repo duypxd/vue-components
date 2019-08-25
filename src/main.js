@@ -4,7 +4,7 @@ import moment from "moment";
 import "roboto-fontface/css/roboto/roboto-fontface.css";
 import "font-awesome/css/font-awesome.css";
 
-import "./plugins/vuetify";
+import vuetify from "@/plugins/vuetify";
 import "./plugins/filter";
 import router from "./router/";
 import store from "./store";
@@ -16,5 +16,6 @@ Vue.prototype.$eventHub = new Vue();
 new Vue({
   router,
   store,
+  vuetify,
   render: h => h(App),
 }).$mount("#app");

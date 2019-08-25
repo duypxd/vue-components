@@ -30,7 +30,7 @@ export default {
         { id: 6, name: "Todos", path: "/todo-list", icon: "list" },
         {
           id: 7,
-          name: "FilesUpload",
+          name: "Files Upload",
           path: "/files-drag-drop",
           icon: "cloud_upload"
         },

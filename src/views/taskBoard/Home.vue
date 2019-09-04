@@ -1,3 +1,3 @@
 <template>
-  <v-layout>Task Board</v-layout>
+  <v-row no-gutters>Task Board</v-row>
 </template>

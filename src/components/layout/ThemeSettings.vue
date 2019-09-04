@@ -4,11 +4,11 @@
       <v-toolbar-title>Theme Settings</v-toolbar-title>
     </v-toolbar>
     <v-container>
-      <v-layout column>
-        <v-flex>
+      <v-row no-gutters>
+        <v-col>
           <v-subheader class="px-1 my-2">Color Option</v-subheader>
           <div class="color-option">
-            <v-layout wrap>
+            <v-row wrap>
               <label
                 class="color-option--label flex xs6 pa-1"
                 v-for="(option, index) in themeColorOptions"
@@ -29,7 +29,7 @@
                   <span class="sideMenu" :class="option.value.sideManu"></span>
                 </span>
               </label>
-            </v-layout>
+            </v-row>
           </div>
           <div class="theme-options">
             <v-subheader class="px-1 my-2">Sidebar Option</v-subheader>
@@ -41,8 +41,8 @@
               </v-btn-toggle>
             </div>
           </div>
-        </v-flex>
-      </v-layout>
+        </v-col>
+      </v-row>
     </v-container>
   </div>
 </template>

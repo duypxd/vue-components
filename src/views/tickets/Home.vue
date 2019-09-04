@@ -1,12 +1,12 @@
 <template>
-  <v-layout row>
-    <v-flex xs3>
+  <v-row no-gutters>
+    <v-col cols="3">
       <MenuTickets />
-    </v-flex>
-    <v-flex xs9>
-      <v-layout column>
-        <v-flex sm12>
-          <v-layout row justify-space-between>
+    </v-col>
+    <v-col cols="9">
+      <v-row no-gutters>
+        <v-col sm="12">
+          <v-row no-gutters justify="space-between">
             <v-tooltip bottom>
               <template v-slot:activator="{ on }">
                 <v-btn primary v-on="on" icon @click="isShow = true">
@@ -16,9 +16,9 @@
               <span>Category</span>
             </v-tooltip>
             <v-btn>Filter</v-btn>
-          </v-layout>
-        </v-flex>
-        <v-flex sm12>
+          </v-row>
+        </v-col>
+        <v-col sm="12">
           <TabViewTickets
             :itemsTickets="dataTickets"
             :totals="totals"
@@ -27,11 +27,11 @@
             @removeTickets="removeTickets"
             @getTickets="getTickets"
           />
-        </v-flex>
-      </v-layout>
-    </v-flex>
+        </v-col>
+      </v-row>
+    </v-col>
     <ModalCategory :isShow="isShow" @cancel="isShow = false" />
-  </v-layout>
+  </v-row>
 </template>
 <script>
 import { mapGetters, mapActions } from "vuex";

@@ -8,16 +8,16 @@
       @changeWeekYear="changeWeekOfYear"
       @changeMonthYear="changeMonthOfYear"
     />
-    <v-layout class="mt-3 preview-list">
-      <v-flex v-for="day in dayList" :key="day" class="preview-card">
+    <v-row no-gutters class="mt-3 preview-list flex-nowrap">
+      <v-col v-for="day in dayList" :key="day" class="preview-card">
         <TimeLinePreview
           @activeCard="activePreview(day)"
           :timeLine="previewData[day]"
           :isActive="activePreviewIndex === day"
           :date="day"
         />
-      </v-flex>
-    </v-layout>
+      </v-col>
+    </v-row>
   </div>
 </template>
 

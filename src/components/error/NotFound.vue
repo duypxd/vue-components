@@ -1,5 +1,5 @@
 <template>
-  <v-layout justify-center align-center>
-    <v-flex>Page NotFound</v-flex>
-  </v-layout>
+  <v-row no-gutters justify="center" align="center">
+    <v-col>Page NotFound</v-col>
+  </v-row>
 </template>

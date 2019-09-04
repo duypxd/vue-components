@@ -10,7 +10,7 @@
       <v-list @click.native.stop class="px-2">
         <div class="title">Select the month of year</div>
         <v-divider class="mt-2"></v-divider>
-        <v-layout align-center>
+        <v-row no-gutters align="center">
           <div style="width:80px">
             <v-select class="px-1" v-model="month" :items="months" menu-props="auto" label="Month"></v-select>
           </div>
@@ -20,7 +20,7 @@
           <div>
             <v-btn class="my-0 primary" @click="submit">Ok</v-btn>
           </div>
-        </v-layout>
+        </v-row>
       </v-list>
     </v-menu>
   </div>

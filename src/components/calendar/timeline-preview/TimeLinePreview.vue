@@ -8,10 +8,10 @@
   >
     <v-card-text class="preview-inner px-0 pt-2 pb-3">
       <div class="card-container">
-        <v-layout class="title-place px-2 py-2" justify-space-between>
+        <v-row no-gutters class="title-place px-2 py-2 ma-1" justify="space-between">
           <span class="headline">{{days}}</span>
           <span class="caption">{{day}}</span>
-        </v-layout>
+        </v-row>
         <TimeLineBody :list="timeLine" />
       </div>
     </v-card-text>

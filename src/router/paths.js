@@ -2,7 +2,7 @@
 import NotFound from "../components/error/NotFound";
 
 import Dashboard from "../views/dashboard/Home";
-import Employees from "../views/employees/Home";
+import Tickets from "../views/tickets/Home";
 import TimeLine from "../views/timeLine/Home";
 import Kanban from "../views/kanban/Home";
 import TaskBoard from "../views/taskBoard/Home";
@@ -31,9 +31,9 @@ export default [
     component: Dashboard
   },
   {
-    path: "/employees",
-    name: "Employees",
-    component: Employees
+    path: "/tickets",
+    name: "Tickets",
+    component: Tickets
   },
   {
     path: "/time-line",

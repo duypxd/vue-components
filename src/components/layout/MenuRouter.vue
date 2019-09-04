@@ -18,7 +18,7 @@ export default {
     return {
       items: [
         { id: 1, name: "Dashboard", path: "/dashboard", icon: "trending_up" },
-        { id: 2, name: "Employees", path: "/employees", icon: "people" },
+        { id: 2, name: "Tickets", path: "/tickets", icon: "people" },
         { id: 3, name: "TimeLine", path: "/time-line", icon: "timeline" },
         { id: 4, name: "Kanban", path: "/kan-ban", icon: "settings_overscan" },
         {

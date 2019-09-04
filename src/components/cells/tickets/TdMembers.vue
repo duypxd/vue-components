@@ -1,5 +1,5 @@
 <template>
-  <td>{{ dataRow.myProfile.name }}</td>
+  <td>{{dataRow.members}}</td>
 </template>
 <script>
 export default {

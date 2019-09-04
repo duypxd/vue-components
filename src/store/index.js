@@ -7,7 +7,7 @@ import theme from "./modules/theme";
 import members from "./modules/member-global";
 
 //import modules
-import employees from "./modules/employees";
+import tickets from "./modules/tickets";
 import timeline from "./modules/timeline";
 
 Vue.use(Vuex);
@@ -29,7 +29,7 @@ export default new Vuex.Store({
     theme,
     members,
     // Component
-    employees,
+    tickets,
     timeline
   },
   strict: debug,

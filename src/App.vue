@@ -27,7 +27,7 @@ import AppToolbar from "./components/layout/AppToolbar";
 import ThemeSettings from "./components/layout/ThemeSettings";
 import colors from "vuetify/lib/util/colors";
 
-import { mapGetters } from "vuex";
+import { mapGetters, mapActions } from "vuex";
 export default {
   components: {
     AppDrawer,
@@ -45,6 +45,7 @@ export default {
     ...mapGetters("theme", ["themeColor", "isDark"])
   },
   methods: {
+    ...mapActions("members", ["getDataMembersGlobal"]),
     openThemeSettings() {
       this.$vuetify.goTo(0);
       this.rightDrawer = !this.rightDrawer;
@@ -57,6 +58,9 @@ export default {
       this.themeColor
     ].base;
     this.$vuetify.theme.dark = this.isDark === "dark";
+  },
+  mounted() {
+    this.getDataMembersGlobal();
   }
 };
 </script>

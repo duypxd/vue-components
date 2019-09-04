@@ -1,7 +1,10 @@
 import Vue from "vue";
 import Vuex from "vuex";
 import createLogger from "vuex/dist/logger";
+
+//Global
 import theme from "./modules/theme";
+import members from "./modules/member-global";
 
 //import modules
 import employees from "./modules/employees";
@@ -22,7 +25,10 @@ export default new Vuex.Store({
     }
   },
   modules: {
+    // Global
     theme,
+    members,
+    // Component
     employees,
     timeline
   },

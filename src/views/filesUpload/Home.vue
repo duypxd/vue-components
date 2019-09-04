@@ -1,3 +1,3 @@
 <template>
-  <v-layout>Upload</v-layout>
+  <v-row no-gutters>Upload</v-row>
 </template>

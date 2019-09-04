@@ -1,20 +1,20 @@
 <template>
-  <v-layout align-center class="px-2">
-    <v-flex xs12 sm4></v-flex>
-    <v-flex xs12 sm4 class="text-xs-center">
+  <v-row no-gutters align="center" class="px-2">
+    <v-col cols="12" sm="4"></v-col>
+    <v-col cols="12" sm="4" class="text-xs-center">
       <WeekOfYear v-if="type === 1" :weekYear="weekYear" @submit="changeWeekOfYear" />
       <MonthOfYear v-else-if="type === 2" :monthYear="monthYear" @submit="changeMonthOfYear" />
-    </v-flex>
-    <v-flex xs12 sm4>
-      <v-layout justify-end>
+    </v-col>
+    <v-col cols="12" sm="4">
+      <v-row no-gutters justify="end" align="center">
         <PrevAndNextCalendar class="mr-3" @prev="prev" @next="next" />
         <v-btn-toggle :value="type" @change="change" mandatory>
           <v-btn class="px-3" :value="1">Week</v-btn>
           <v-btn class="px-3" :value="2">Month</v-btn>
         </v-btn-toggle>
-      </v-layout>
-    </v-flex>
-  </v-layout>
+      </v-row>
+    </v-col>
+  </v-row>
 </template>
 <script>
 import WeekOfYear from "../../menus/WeekOfYear";

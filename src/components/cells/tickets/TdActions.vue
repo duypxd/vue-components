@@ -1,6 +1,6 @@
 <template>
   <td>
-    <v-layout row>
+    <v-row no-gutters>
       <v-btn small icon>
         <v-icon small>visibility</v-icon>
       </v-btn>
@@ -10,7 +10,7 @@
       <v-btn small icon v-if="dataRow.assigneeByMe">
         <v-icon small>person_add</v-icon>
       </v-btn>
-    </v-layout>
+    </v-row>
   </td>
 </template>
 <script>

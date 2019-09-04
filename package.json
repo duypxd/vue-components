@@ -9,7 +9,6 @@
   },
   "dependencies": {
     "axios": "^0.19.0",
-    "core-js": "^2.6.5",
     "echarts": "^4.2.1",
     "font-awesome": "^4.7.0",
     "js-cookie": "^2.2.1",
@@ -22,7 +21,7 @@
     "vue": "^2.6.10",
     "vue-perfect-scrollbar": "^0.2.0",
     "vue-router": "^3.1.2",
-    "vuetify": "^2.0.10",
+    "vuetify": "^2.0.14",
     "vuex": "^3.1.1"
   },
   "devDependencies": {

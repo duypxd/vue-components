@@ -1,3 +1,3 @@
 <template>
-  <v-layout>Messages</v-layout>
+  <v-row no-gutters>Messages</v-row>
 </template>

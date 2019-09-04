@@ -1,3 +1,3 @@
 <template>
-  <v-layout>Kanban</v-layout>
+  <v-row>Kanban</v-row>
 </template>

@@ -1,3 +1,3 @@
 <template>
-  <v-layout>Todos</v-layout>
+  <v-row no-gutters>Todos</v-row>
 </template>

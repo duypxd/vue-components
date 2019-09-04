@@ -1,3 +1,3 @@
 <template>
-  <v-layout>Report</v-layout>
+  <v-row no-gutters>Report</v-row>
 </template>

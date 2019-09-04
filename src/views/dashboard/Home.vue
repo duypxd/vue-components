@@ -1,3 +1,3 @@
 <template>
-  <v-layout>Dashboard</v-layout>
+  <v-row no-gutters>Dashboard</v-row>
 </template>

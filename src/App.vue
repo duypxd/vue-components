@@ -53,6 +53,9 @@ export default {
   created() {
     window.getApp = this;
     this.$vuetify.theme.themes.dark.primary = this.colors[this.themeColor].base;
+    this.$vuetify.theme.themes.light.primary = this.colors[
+      this.themeColor
+    ].base;
     this.$vuetify.theme.dark = this.isDark === "dark";
   }
 };

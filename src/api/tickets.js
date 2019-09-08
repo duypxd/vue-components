@@ -49,8 +49,17 @@ async function dragAndDropRows(req) {
   return req;
 }
 
+async function updateTickets(req) {
+  const results = dataTickets.find(x => x.id === req.rowId)
+  return {
+    ...results,
+    [req.columnName]: results[req.columnName] = req.bodyRequest[req.columnName]
+  }
+}
+
 export default {
   getDataTickets,
   removeTickets,
-  dragAndDropRows
+  dragAndDropRows,
+  updateTickets
 }

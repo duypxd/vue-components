@@ -15,7 +15,7 @@
           :column="props.column"
           :dataRow="props.dataRow"
           @update="update(props.column.name, props.dataRow.id, $event)"
-          @remove="$emit('removeTickets', {id: $event})"
+          @remove="openDialogDelete({id: $event})"
         />
       </template>
       <template slot="actions-prepend">
@@ -27,11 +27,19 @@
         </div>
       </template>
     </SlickGridTable>
+    <DeleteConfirm
+      :isShow="isShowModalDelete"
+      @cancel="isShowModalDelete = false"
+      @remove="$emit('removeTickets', itemDelete); isShowModalDelete = false"
+      title="Confirm delete"
+      messageConfirm="Are you sure want to delete this item?"
+    />
   </div>
 </template>
 
 <script>
 import SlickGridTable from "../../components/slick-grid/SlickGridTable";
+import DeleteConfirm from "../../components/dialogs/DeleteConfirm";
 
 import TdCategory from "../cells/tickets/TdCategory";
 import TdClient from "../cells/tickets/TdClient";
@@ -47,6 +55,8 @@ import TdActions from "../cells/tickets/TdActions";
 export default {
   components: {
     SlickGridTable,
+    DeleteConfirm,
+
     TdCategory,
     TdClient,
     TdDate,
@@ -66,6 +76,8 @@ export default {
   data() {
     return {
       isShow: false,
+      itemDelete: null,
+      isShowModalDelete: false,
       pagination: {},
       headers: [
         {
@@ -196,6 +208,10 @@ export default {
     },
     updatePagination({ page }) {
       return page;
+    },
+    openDialogDelete(val) {
+      this.isShowModalDelete = true;
+      this.itemDelete = val;
     }
   }
 };

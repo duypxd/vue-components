@@ -16,8 +16,18 @@ function array_merge(myArray) {
 }
 
 async function getDataTickets(req) {
-  if (req.type === "all_tickets") {
-    return array_merge(dataTickets)
+  if (req.type === "All") {
+    const data = array_merge(dataTickets);
+    if (req.key !== "Not Filter") {
+      const resp = data.results.filter(f => f[req.value] === req.key);
+      return {
+        id: 9999,
+        results: resp,
+        totals: resp.length,
+      }
+    } else {
+      return data;
+    }
   } else {
     return dataTickets;
   }

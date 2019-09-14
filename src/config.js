@@ -1,3 +1,11 @@
+export const ticketConfig = [
+  { id: 1000, name: "Status" },
+  { id: 2000, name: "Priority" },
+  { id: 3000, name: "Category" },
+  { id: 4000, name: "Urgency" }
+]
+
+
 export const themeColors = [
   {
     key: "blue",

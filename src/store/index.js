@@ -5,6 +5,7 @@ import createLogger from "vuex/dist/logger";
 //Global
 import theme from "./modules/theme";
 import members from "./modules/member-global";
+import gettersGlobal from "./modules/getters-global";
 
 //import modules
 import tickets from "./modules/tickets";
@@ -28,9 +29,10 @@ export default new Vuex.Store({
     // Global
     theme,
     members,
+    gettersGlobal,
     // Component
     tickets,
-    timeline
+    timeline,
   },
   strict: debug,
   plugins: debug ? [createLogger()] : []

@@ -4,7 +4,6 @@
     <v-tab-item v-for="item in tabs" :key="item.id">
       <TableTickets
         :itemsTickets="itemsTickets"
-        :totals="totals"
         :isLoading="isLoading"
         @updateTickets="evt => $emit('updateTickets', evt)"
         @removeTickets="evt => $emit('removeTickets', evt)"
@@ -20,8 +19,7 @@ export default {
     TableTickets
   },
   props: {
-    itemsTickets: Array,
-    totals: Number,
+    itemsTickets: Object,
     isLoading: Boolean
   },
   data() {

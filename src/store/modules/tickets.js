@@ -1,17 +1,29 @@
 import api from "../../api/tickets";
 
 const state = {
-  dataTickets: [],
-  totals: 0,
+  dataTickets: {},
   isLoading: false
 };
 
 const getters = {
-  dataTickets: state => {
-    const resp = JSON.parse(JSON.stringify(state.dataTickets));
-    return resp;
+  dataTickets: (state, _, __, rootGetters) => {
+    if (state.dataTickets.id === 9999) {
+      return state.dataTickets;
+    } else {
+      var nameGetters = rootGetters["gettersGlobal/ticketsConfig"];
+      var group = {};
+      Object.keys(state.dataTickets).reduce((_, key) => {
+        const item = nameGetters.find(f => f.id == key);
+        const objectKeys = state.dataTickets[key];
+        group[item.name] = {
+          id: key,
+          results: objectKeys.results,
+          totals: objectKeys.results.length
+        }
+      }, {});
+      return group;
+    }
   },
-  totals: state => state.totals,
   isLoading: state => state.isLoading
 };
 
@@ -37,22 +49,24 @@ const mutations = {
     state.isLoading = isLoading;
   },
   getDataTickets(state, response) {
-    state.dataTickets = response.results;
-    state.totals = response.count;
+    state.dataTickets = response;
   },
   updateTickets(state, response) {
-    state.dataTickets = state.dataTickets.map(x => {
-      if (x.id === response.id) {
-        return { ...x, ...response }
+    state.dataTickets.results = state.dataTickets.results.map(x => {
+      if (x.id === response.rowId) {
+        const res = {
+          [response.columnName]: response.bodyRequest[response.columnName]
+        }
+        return { ...x, ...res }
       }
       return x;
     })
   },
   removeTickets(state, response) {
-    state.dataTickets = state.dataTickets.filter(x => x.id !== response)
+    state.dataTickets.results = state.dataTickets.results.filter(x => x.id !== response)
   },
   dragAndDropRows(state, response) {
-    state.dataTickets = response;
+    state.dataTickets.results = response;
   }
 };
 

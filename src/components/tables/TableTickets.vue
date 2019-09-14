@@ -1,11 +1,11 @@
 <template>
   <div>
     <SlickGridTable
-      :items="itemsTickets"
+      :items="itemsTickets.results"
       :headers="headers"
       :loading="isLoading"
-      :totals="totals"
-      :rowsPerPage="20"
+      :totals="itemsTickets.totals"
+      :itemsPerPage="20"
       :pagination.sync="pagination"
       @dragAndDropRows="resp => $emit('dragAndDropRows', resp)"
     >
@@ -59,7 +59,7 @@ export default {
     TdActions
   },
   props: {
-    itemsTickets: Array,
+    itemsTickets: Object,
     totals: Number,
     isLoading: Boolean
   },

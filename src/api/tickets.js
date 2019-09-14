@@ -1,42 +1,25 @@
 import { sleep } from "./base";
 import { dataTickets } from "../mock-data/data-tickets";
 
+function array_merge(myArray) {
+  var arrayConvert = Object.keys(myArray).reduce((arr, key) => {
+    const data = { results: myArray[key].results };
+    return arr.concat(data)
+  }, []);
+  var merge = arrayConvert.map(x => x.results);
+  var mergeResults = [].concat.apply([], merge);
+  return {
+    id: 9999,
+    results: mergeResults,
+    totals: mergeResults.length,
+  }
+}
+
 async function getDataTickets(req) {
   if (req.type === "all_tickets") {
-    return {
-      results: dataTickets,
-      count: dataTickets.length
-    };
-  } else if (req.type === "my_tickets") {
-    let my_tickets = dataTickets.filter(x => x.assigneeByMe === true)
-    return {
-      results: my_tickets,
-      count: my_tickets.length
-    };
-  } if (req.type === "open") {
-    let open = dataTickets.filter(x => x.status === 1)
-    return {
-      results: open,
-      count: open.length
-    };
-  } else if (req.type === "in_progress") {
-    let in_progress = dataTickets.filter(x => x.status === 2)
-    return {
-      results: in_progress,
-      count: in_progress.length
-    };
-  } if (req.type === "closed") {
-    let closed = dataTickets.filter(x => x.status === 3)
-    return {
-      results: closed,
-      count: closed.length
-    };
-  } else if (req.type === "trash") {
-    let trash = dataTickets.filter(x => x.status === 3)
-    return {
-      results: trash,
-      count: trash.length
-    };
+    return array_merge(dataTickets)
+  } else {
+    return dataTickets;
   }
 }
 
@@ -50,12 +33,9 @@ async function dragAndDropRows(req) {
 }
 
 async function updateTickets(req) {
-  const results = dataTickets.find(x => x.id === req.rowId)
-  return {
-    ...results,
-    [req.columnName]: results[req.columnName] = req.bodyRequest[req.columnName]
-  }
+  return req;
 }
+
 
 export default {
   getDataTickets,

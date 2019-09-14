@@ -21,7 +21,6 @@
         <v-col sm="12">
           <TabViewTickets
             :itemsTickets="dataTickets"
-            :totals="totals"
             :isLoading="isLoading"
             @updateTickets="updateTickets"
             @removeTickets="removeTickets"
@@ -61,7 +60,7 @@ export default {
     }
   },
   computed: {
-    ...mapGetters("tickets", ["totals", "dataTickets", "isLoading"])
+    ...mapGetters("tickets", ["dataTickets", "isLoading"])
   },
   mounted() {
     this.getTickets("all_tickets");

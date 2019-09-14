@@ -10,7 +10,7 @@ async function getDataCategory() {
 async function createCategory(req) {
   return {
     ...req,
-    id: Math.random()
+    id: dataCategory.length + 1
   };
 }
 

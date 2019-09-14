@@ -29,20 +29,20 @@
         </v-col>
       </v-row>
     </v-col>
-    <ModalCategory :isShow="isShow" @cancel="isShow = false" />
+    <ListCategory :isShow="isShow" @cancel="isShow = false" />
   </v-row>
 </template>
 <script>
 import { mapGetters, mapActions } from "vuex";
 import MenuTickets from "../../components/menus/MenuTickets";
 import TabViewTickets from "../../components/tab/TabViewTickets";
-import ModalCategory from "../../components/dialogs/ModalCategory";
+import ListCategory from "../../components/dialogs/ListCategory";
 
 export default {
   components: {
     MenuTickets,
     TabViewTickets,
-    ModalCategory
+    ListCategory
   },
   data() {
     return {

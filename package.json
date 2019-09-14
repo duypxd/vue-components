@@ -19,6 +19,7 @@
     "sortablejs": "^1.10.0-rc3",
     "vee-validate": "^3.0.0",
     "vue": "^2.6.10",
+    "vue-color": "^2.7.0",
     "vue-perfect-scrollbar": "^0.2.0",
     "vue-router": "^3.1.2",
     "vuetify": "^2.0.15",

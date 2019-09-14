@@ -1,6 +1,6 @@
 <template>
   <td>
-    <v-row no-gutters>
+    <v-row no-gutters style="width: 90px;">
       <v-btn small icon>
         <v-icon small>visibility</v-icon>
       </v-btn>

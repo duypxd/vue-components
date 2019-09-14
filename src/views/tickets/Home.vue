@@ -16,10 +16,12 @@
               <span>Category</span>
             </v-tooltip>
             <v-btn>Filter</v-btn>
+            <TypeLink />
           </v-row>
         </v-col>
         <v-col sm="12">
           <TabViewTickets
+            v-if="$route.params.type === 'table'"
             :itemsTickets="dataTickets"
             :isLoading="isLoading"
             @updateTickets="updateTickets"
@@ -34,6 +36,7 @@
 </template>
 <script>
 import { mapGetters, mapActions } from "vuex";
+import TypeLink from "./TypeLink";
 import MenuTickets from "../../components/menus/MenuTickets";
 import TabViewTickets from "../../components/tab/TabViewTickets";
 import ListCategory from "../../components/dialogs/ListCategory";
@@ -42,7 +45,8 @@ export default {
   components: {
     MenuTickets,
     TabViewTickets,
-    ListCategory
+    ListCategory,
+    TypeLink
   },
   data() {
     return {
@@ -58,6 +62,18 @@ export default {
     ...mapActions("tickets/category", ["getDataCategory"]),
     getTickets(type) {
       this.getDataTickets(type);
+    },
+    redirectRoute() {
+      if (!this.$route.params.listType) {
+        const type = this.$route.params.type || "table";
+        this.$router.push({
+          name: "Tickets",
+          params: {
+            ...this.$route.params,
+            type
+          }
+        });
+      }
     }
   },
   computed: {
@@ -67,6 +83,7 @@ export default {
   mounted() {
     this.getTickets({ type: "All", key: "Not Filter", value: "" });
     this.getDataCategory();
+    this.redirectRoute();
   }
 };
 </script>

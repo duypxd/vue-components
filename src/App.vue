@@ -46,6 +46,7 @@ export default {
   },
   methods: {
     ...mapActions("members", ["getDataMembersGlobal"]),
+    ...mapActions("gettersGlobal", ["getDataGettersGlobal"]),
     openThemeSettings() {
       this.$vuetify.goTo(0);
       this.rightDrawer = !this.rightDrawer;
@@ -61,6 +62,7 @@ export default {
   },
   mounted() {
     this.getDataMembersGlobal();
+    this.getDataGettersGlobal();
   }
 };
 </script>

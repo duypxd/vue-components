@@ -16,7 +16,7 @@ const actions = {
 
 const mutations = {
   getDataGettersGlobal(state, response) {
-    state.ticketsConfig = response.ticketsConfig;
+    state.ticketsConfig = response.ticketConfig;
   }
 }
 

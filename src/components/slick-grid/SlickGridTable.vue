@@ -3,7 +3,7 @@
     :headers="headers"
     :items="items"
     :server-items-length="totals"
-    :items-per-page="rowsPerPage"
+    :items-per-page="itemsPerPage"
     :options="pagination"
     @update:pagination="updatePagination"
     class="elevation-1 c-table"
@@ -51,7 +51,7 @@ export default {
     pagination: Object,
     dragging: Boolean,
     headers: Array,
-    rowsPerPage: Number,
+    itemsPerPage: Number,
     groupRows: {
       type: String,
       default: "rows"

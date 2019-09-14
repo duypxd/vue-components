@@ -1,10 +1,13 @@
 <template>
   <v-tabs>
-    <v-tab v-for="tab in tabs" :key="tab.id" @change="$emit('getTickets', tab.type)">{{tab.name}}</v-tab>
+    <v-tab
+      v-for="tab in tabs"
+      :key="tab.id"
+      @change="$emit('getTickets', {type: 'All', key: tab.key, value: tab.value})"
+    >{{tab.name}}</v-tab>
     <v-tab-item v-for="item in tabs" :key="item.id">
       <TableTickets
         :itemsTickets="itemsTickets"
-        :totals="totals"
         :isLoading="isLoading"
         @updateTickets="evt => $emit('updateTickets', evt)"
         @removeTickets="evt => $emit('removeTickets', evt)"
@@ -20,19 +23,18 @@ export default {
     TableTickets
   },
   props: {
-    itemsTickets: Array,
-    totals: Number,
+    itemsTickets: Object,
     isLoading: Boolean
   },
   data() {
     return {
       tabs: [
-        { id: 1, name: "All Tickets", type: "all_tickets" },
-        { id: 2, name: "My Tickets", type: "my_tickets" },
-        { id: 3, name: "Open", type: "open" },
-        { id: 4, name: "In Progress", type: "in_progress" },
-        { id: 5, name: "Closed", type: "closed" },
-        { id: 6, name: "Trash", type: "trash" }
+        { id: 1, name: "All Tickets", key: "Not Filter", value: "" },
+        { id: 2, name: "My Tickets", key: true, value: "assigneeByMe" },
+        { id: 3, name: "Open", key: 1, value: "status" },
+        { id: 4, name: "In Progress", key: 2, value: "status" },
+        { id: 5, name: "Closed", key: 3, value: "status" },
+        { id: 6, name: "Trash", key: 3, value: "status" }
       ]
     };
   }

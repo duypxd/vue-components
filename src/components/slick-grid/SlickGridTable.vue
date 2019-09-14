@@ -31,9 +31,12 @@
         </tr>
       </tbody>
     </template>
-    <template slot="actions-prepend">
-      <slot name="actions-prepend"></slot>
+    <template slot="footer">
+      <slot name="footer"></slot>
     </template>
+    <!-- <template slot="actions-prepend">
+      <slot name="actions-prepend"></slot>
+    </template> -->
   </VDataTableExtend>
 </template>
 <script>

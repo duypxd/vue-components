@@ -18,9 +18,9 @@
           @remove="openDialogDelete({id: $event})"
         />
       </template>
-      <template slot="actions-prepend">
+      <template slot="footer">
         <div>
-          <v-btn outline color="primary" @click="isShow = true">
+          <v-btn outlined color="primary" @click="isShow = true">
             <span>Add new</span>
             <v-icon class="pl-1">add</v-icon>
           </v-btn>

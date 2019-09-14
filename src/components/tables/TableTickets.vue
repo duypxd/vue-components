@@ -125,13 +125,6 @@ export default {
         {
           visible: true,
           sortable: false,
-          text: "Matter Group",
-          value: "matter_group",
-          name: "matter_group"
-        },
-        {
-          visible: true,
-          sortable: false,
           text: "Priority",
           value: "priority",
           name: "priority"

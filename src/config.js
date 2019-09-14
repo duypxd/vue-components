@@ -5,6 +5,27 @@ export const ticketConfig = [
   { id: 4000, name: "Urgency" }
 ]
 
+export const taskLevel = [
+  { id: 1, name: "Ignored" },
+  { id: 2, name: "Backlog" },
+  { id: 3, name: "Evaluate" },
+  { id: 4, name: "Review" },
+  { id: 5, name: "Final result" }
+]
+
+export const priority = [
+  { id: 1, name: "Very low" },
+  { id: 2, name: "Low" },
+  { id: 3, name: "Normal" },
+  { id: 4, name: "High" },
+  { id: 5, name: "Very high" }
+];
+
+export const itemStatus = [
+  { id: 1, name: "Open", color: "success", icon: "open_in_new" },
+  { id: 2, name: "In Progress", color: "primary", icon: "amp_stories" },
+  { id: 3, name: "Closed", color: "error", icon: "cancel" }
+]
 
 export const themeColors = [
   {

@@ -1,11 +1,11 @@
 import getDataGettersGlobal from "../../api/getters-global";
 
 const state = {
-  ticketsConfig: []
+  statusTickets: []
 }
 
 const getters = {
-  ticketsConfig: state => state.ticketsConfig,
+  statusTickets: state => state.statusTickets,
 }
 
 const actions = {
@@ -16,7 +16,7 @@ const actions = {
 
 const mutations = {
   getDataGettersGlobal(state, response) {
-    state.ticketsConfig = response.ticketConfig;
+    state.statusTickets = response.ticketConfig;
   }
 }
 

@@ -1,19 +1,14 @@
 <template>
   <td>
-    <v-chip
-      small
-      :color="`#`+category.find(x => x.id === dataRow.category).color"
-      text-color="white"
-    >
+    <v-btn small :color="`#`+category.find(x => x.id === dataRow.category).color" text-color="white">
       <v-menu v-model="menu" transition="scale-transition" offset-y :close-on-content-click="false">
         <template v-slot:activator="{ on }">
-          <span v-on="on" class="name">{{ nameCustom.name }}</span>
+          <span v-on="on" class="white--text">{{ nameCustom.name }}</span>
         </template>
         <v-list>
           <v-row no-gutters v-for="(item, index) in category" :key="index" class="ma-2">
             <v-btn
               class="px-2 white--text text-capitalize"
-              rounded
               :color="`#`+item.color"
               small
               @click="$emit('update', item.id); menu = false"
@@ -21,7 +16,7 @@
           </v-row>
         </v-list>
       </v-menu>
-    </v-chip>
+    </v-btn>
   </td>
 </template>
 <script>
@@ -53,9 +48,5 @@ export default {
   color: white;
   border: 3px solid transparent;
   background-clip: padding-box;
-}
-.name {
-  cursor: pointer;
-  min-width: 150px;
 }
 </style>

@@ -55,15 +55,18 @@ export default {
       "updateTickets",
       "removeTickets"
     ]),
+    ...mapActions("tickets/category", ["getDataCategory"]),
     getTickets(type) {
       this.getDataTickets(type);
     }
   },
   computed: {
+    ...mapGetters("tickets", ["dataTickets", "isLoading"]),
     ...mapGetters("tickets", ["dataTickets", "isLoading"])
   },
   mounted() {
-    this.getTickets({type: "All", key: 'Not Filter', value: ''});
+    this.getTickets({ type: "All", key: "Not Filter", value: "" });
+    this.getDataCategory();
   }
 };
 </script>

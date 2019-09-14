@@ -1,4 +1,5 @@
 import api from "../../api/tickets";
+import category from "./tickets.category";
 
 const state = {
   dataTickets: {},
@@ -75,5 +76,8 @@ export default {
   state,
   getters,
   mutations,
-  actions
+  actions,
+  modules: {
+    category
+  }
 };

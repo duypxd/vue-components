@@ -53,19 +53,19 @@ const mutations = {
   getDataTickets(state, response) {
     state.dataTickets = response;
   },
-  updateTickets(state, response) {
-    state.dataTickets.results = state.dataTickets.results.map(x => {
-      if (x.id === response.rowId) {
+  updateTickets(state, resp) {
+    state.dataTickets[resp.key].results = state.dataTickets[resp.key].results.map(x => {
+      if (x.id === resp.rowId) {
         const res = {
-          [response.columnName]: response.bodyRequest[response.columnName]
+          [resp.columnName]: resp.bodyRequest[resp.columnName]
         }
         return { ...x, ...res }
       }
       return x;
     })
   },
-  removeTickets(state, response) {
-    state.dataTickets.results = state.dataTickets.results.filter(x => x.id !== response)
+  removeTickets(state, resp) {
+    state.dataTickets[resp.key].results = state.dataTickets[resp.key].results.filter(x => x.id !== resp.id)
   },
   dragAndDropRows(state, response) {
     state.dataTickets.results = response;

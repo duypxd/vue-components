@@ -9,9 +9,11 @@ function array_merge(myArray) {
   var merge = arrayConvert.map(x => x.results);
   var mergeResults = [].concat.apply([], merge);
   return {
-    id: 9999,
-    results: mergeResults,
-    totals: mergeResults.length,
+    0: {
+      id: 1,
+      results: mergeResults,
+      totals: mergeResults.length,
+    }
   }
 }
 
@@ -21,9 +23,11 @@ async function getDataTickets(req) {
     if (req.key !== "Not Filter") {
       const resp = data.results.filter(f => f[req.value] === req.key);
       return {
-        id: 9999,
-        results: resp,
-        totals: resp.length,
+        0: {
+          id: 1,
+          results: resp,
+          totals: resp.length,
+        }
       }
     } else {
       return data;
@@ -44,7 +48,7 @@ async function getDataTickets(req) {
 }
 
 async function removeTickets(req) {
-  return req.id
+  return req;
 }
 
 async function dragAndDropRows(req) {

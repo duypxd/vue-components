@@ -31,7 +31,7 @@ export default [
     component: Dashboard
   },
   {
-    path: "/tickets",
+    path: "/tickets/:type?",
     name: "Tickets",
     component: Tickets
   },

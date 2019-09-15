@@ -23,7 +23,7 @@ export default {
     TableTickets
   },
   props: {
-    itemsTickets: Object,
+    itemsTickets: [Array, Object],
     isLoading: Boolean
   },
   data() {

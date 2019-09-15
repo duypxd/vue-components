@@ -1,8 +1,8 @@
 export const ticketConfig = [
-  { id: 1000, name: "Status" },
-  { id: 2000, name: "Priority" },
-  { id: 3000, name: "Category" },
-  { id: 4000, name: "Urgency" }
+  { id: 1000, name: "Status", key: "status" },
+  { id: 2000, name: "Priority", key: "priority" },
+  { id: 3000, name: "Category", key: "category" },
+  { id: 4000, name: "Urgency", key: "urgency" }
 ]
 
 export const taskLevel = [

@@ -28,8 +28,18 @@ async function getDataTickets(req) {
     } else {
       return data;
     }
-  } else {
-    return dataTickets;
+  } else if (req.type === "group") {
+    var data = (dataTickets[req.idGroup] || {}).results;
+    let groupBy = {};
+    data.forEach((item) => {
+      const results = data.filter(f => f[req.keyGroup] === item[req.keyGroup])
+      groupBy[item[req.keyGroup]] = {
+        id: item[req.keyGroup],
+        results,
+        totals: results.length,
+      }
+    });
+    return groupBy;
   }
 }
 

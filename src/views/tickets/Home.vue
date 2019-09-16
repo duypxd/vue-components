@@ -22,10 +22,10 @@
         <v-col sm="12">
           <TabViewTickets
             v-if="$route.params.type === 'table'"
-            :itemsTickets="dataTickets"
+            :itemsTickets="dataTickets[0]"
             :isLoading="isLoading"
-            @updateTickets="updateTickets"
-            @removeTickets="removeTickets"
+            @updateTickets="updateTickets({...$event, key: 0})"
+            @removeTickets="removeTickets({...$event, key: 0})"
             @getTickets="getTickets"
           />
 
@@ -43,8 +43,8 @@
                 <TableTickets
                   :itemsTickets="list"
                   :isLoading="isLoading"
-                  @updateTickets="updateTickets"
-                  @removeTickets="removeTickets"
+                  @updateTickets="updateTickets({...$event, key: list.id})"
+                  @removeTickets="removeTickets({...$event, key: list.id})"
                 />
               </div>
             </template>

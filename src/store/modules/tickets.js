@@ -8,22 +8,23 @@ const state = {
 
 const getters = {
   dataTickets: (state, _, __, rootGetters) => {
-    if (state.dataTickets.id === 9999) {
-      return state.dataTickets;
-    } else {
-      var nameGetters = rootGetters["gettersGlobal/statusTickets"];
-      var group = {};
-      Object.keys(state.dataTickets).reduce((_, key) => {
-        const item = nameGetters.find(f => f.id == key);
-        const objectKeys = state.dataTickets[key];
-        group[item.name] = {
-          id: key,
-          results: objectKeys.results,
-          totals: objectKeys.results.length
-        }
-      }, {});
-      return group;
-    }
+    // if (state.dataTickets.id === 9999) {
+    //   return state.dataTickets;
+    // } else {
+    //   var nameGetters = rootGetters["gettersGlobal/statusTickets"];
+    //   var group = {};
+    //   Object.keys(state.dataTickets).reduce((_, key) => {
+    //     const item = nameGetters.find(f => f.id == key);
+    //     const objectKeys = state.dataTickets[key];
+    //     group[item.name] = {
+    //       id: key,
+    //       results: objectKeys.results,
+    //       totals: objectKeys.results.length
+    //     }
+    //   }, {});
+    //   return group;
+    // }
+    return state.dataTickets;
   },
   isLoading: state => state.isLoading
 };

@@ -28,6 +28,27 @@
             @removeTickets="removeTickets"
             @getTickets="getTickets"
           />
+
+          <TabGroupTickets
+            v-else-if="$route.params.type !== 'table'"
+            @getGroupTypeName="getDataTickets"
+          >
+            <template
+              slot="group"
+              v-if="$route.params.type === 'group'"
+              slot-scope="{dataKeyGroup}"
+            >
+              <div v-for="list in dataTickets" :key="list.id">
+                <div class="pa-2 title">{{(dataKeyGroup.find(x => x.id === list.id) || {}).name}}</div>
+                <TableTickets
+                  :itemsTickets="list"
+                  :isLoading="isLoading"
+                  @updateTickets="updateTickets"
+                  @removeTickets="removeTickets"
+                />
+              </div>
+            </template>
+          </TabGroupTickets>
         </v-col>
       </v-row>
     </v-col>
@@ -40,13 +61,17 @@ import TypeLink from "./TypeLink";
 import MenuTickets from "../../components/menus/MenuTickets";
 import TabViewTickets from "../../components/tab/TabViewTickets";
 import ListCategory from "../../components/dialogs/ListCategory";
+import TableTickets from "../../components/tables/TableTickets";
+import TabGroupTickets from "../../components/tab/TabGroupTickets";
 
 export default {
   components: {
     MenuTickets,
     TabViewTickets,
     ListCategory,
-    TypeLink
+    TypeLink,
+    TableTickets,
+    TabGroupTickets
   },
   data() {
     return {
@@ -77,13 +102,23 @@ export default {
     }
   },
   computed: {
-    ...mapGetters("tickets", ["dataTickets", "isLoading"]),
     ...mapGetters("tickets", ["dataTickets", "isLoading"])
   },
   mounted() {
     this.getTickets({ type: "All", key: "Not Filter", value: "" });
     this.getDataCategory();
     this.redirectRoute();
+  },
+  watch: {
+    $route(val) {
+      if (val) {
+        if (val.params.type !== "table") {
+          this.getTickets({ type: val.params.type });
+        } else {
+          this.getTickets({ type: "All", key: "Not Filter", value: "" });
+        }
+      }
+    }
   }
 };
 </script>

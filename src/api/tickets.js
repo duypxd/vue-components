@@ -21,7 +21,7 @@ async function getDataTickets(req) {
   if (req.type === "All") {
     const data = array_merge(dataTickets);
     if (req.key !== "Not Filter") {
-      const resp = data.results.filter(f => f[req.value] === req.key);
+      const resp = data[0].results.filter(f => f[req.value] === req.key);
       return {
         0: {
           id: 1,

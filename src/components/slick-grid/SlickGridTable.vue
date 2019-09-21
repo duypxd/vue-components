@@ -143,9 +143,8 @@ export default {
       const tbody = thisRef.$el.getElementsByTagName("tbody")[0];
       if (!tbody) return;
       const _self = this;
-      const stageId = _self.group.id;
+      const stageId = _self.group ? _self.group.id : null;
       tbody.setAttribute("stage-id", stageId);
-
       Sortable.create(tbody, {
         onEnd(event) {
           const dataItems = JSON.parse(JSON.stringify(_self.items));
@@ -162,7 +161,7 @@ export default {
             newIndex,
             rowId,
             items
-          }
+          };
           _self.$emit("dragAndDropRows", results);
         },
         animation: 200,

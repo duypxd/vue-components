@@ -1,11 +1,7 @@
 <template>
   <div>
     <v-tabs v-model="tabsModel" fixed-tabs background-color="primary">
-      <v-tab
-        v-for="item in statusTickets"
-        :key="item.id"
-        @change="$emit('getGroupTypeName', { type: 'group', idGroup: item.id, keyGroup: item.key })"
-      >{{ item.name }}</v-tab>
+      <v-tab v-for="item in statusTickets" :key="item.id" @change="changeTabs(item)">{{ item.name }}</v-tab>
     </v-tabs>
     <v-tabs-items v-model="tabsModel">
       <v-tab-item v-for="item in statusTickets" :key="item.id">
@@ -42,7 +38,21 @@ export default {
         return this.taskLevel;
       }
     },
-    
+    changeTabs(item) {
+      const route = this.$route.params.type;
+      if (route === "group" || route === "kanban") {
+        this.$emit("getGroupTypeName", {
+          type: "group",
+          idGroup: item.id,
+          keyGroup: item.key
+        });
+      }
+    }
+  },
+  watch: {
+    statusTickets(val) {
+      this.changeTabs({ id: 1000, key: "status" });
+    }
   }
 };
 </script>

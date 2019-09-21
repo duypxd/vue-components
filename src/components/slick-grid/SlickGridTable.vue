@@ -143,7 +143,7 @@ export default {
       const tbody = thisRef.$el.getElementsByTagName("tbody")[0];
       if (!tbody) return;
       const _self = this;
-      const stageId = _self.group.id;
+      const stageId = _self.group ? _self.group.id : null;
       tbody.setAttribute("stage-id", stageId);
 
       Sortable.create(tbody, {

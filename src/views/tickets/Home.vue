@@ -27,6 +27,7 @@
             @updateTickets="updateTickets({...$event, key: 0})"
             @removeTickets="removeTickets({...$event, key: 0})"
             @getTickets="getTickets"
+            @dragAndDropRows="dragAndDropRows"
           />
 
           <TabGroupTickets
@@ -43,8 +44,11 @@
                 <TableTickets
                   :itemsTickets="list"
                   :isLoading="isLoading"
+                  :indexGroup="list.id"
+                  :group="list"
                   @updateTickets="updateTickets({...$event, key: list.id})"
                   @removeTickets="removeTickets({...$event, key: list.id})"
+                  @dragAndDropRows="dragAndDropRows"
                 />
               </div>
             </template>
@@ -99,6 +103,65 @@ export default {
           }
         });
       }
+    },
+    dragAndDropRows(evt) {
+      const { fromGroupId, toGroupId, oldIndex, newIndex, rowId } = evt;
+      const drag = {
+        fromGroupId,
+        toGroupId,
+        oldIndex,
+        newIndex,
+        rowId
+      };
+      const fromStage = this.dataTickets[fromGroupId].results.find(
+        x => x.id === rowId
+      );
+
+      let order = 0;
+      if (fromGroupId !== toGroupId) {
+        const stage = this.dataTickets[toGroupId].results;
+        if (!stage.length) {
+          order = fromStage.order;
+        } else {
+          if (newIndex === 0) {
+            order = stage[newIndex].order;
+          } else {
+            if (newIndex === stage.length) {
+              order = stage[newIndex - 1].order;
+            } else {
+              order = (stage[newIndex].order + stage[newIndex - 1].order) / 2;
+            }
+          }
+        }
+        drag.order = order;
+      } else {
+        const stage = this.dataTickets[fromGroupId].results;
+        if (newIndex > oldIndex) {
+          if (newIndex === stage.length) {
+            order = stage[newIndex].order;
+          } else {
+            order = (stage[newIndex].order + stage[newIndex + 1].order) / 2;
+          }
+        } else {
+          if (newIndex == 0) {
+            order = stage[newIndex].order;
+          } else {
+            order = (stage[newIndex].order + stage[newIndex - 1].order) / 2;
+          }
+        }
+        drag.order = order;
+      }
+      const data = {
+        drag,
+        params: {
+          rowId: drag.rowId
+        },
+        body: {
+          [drag.toGroupId]: drag.toGroupId,
+          order: drag.order
+        }
+      };
+      this.updateTickets(data);
     }
   },
   computed: {

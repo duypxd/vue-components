@@ -54,15 +54,30 @@ const mutations = {
     state.dataTickets = response;
   },
   updateTickets(state, resp) {
-    state.dataTickets[resp.key].results = state.dataTickets[resp.key].results.map(x => {
-      if (x.id === resp.rowId) {
-        const res = {
-          [resp.columnName]: resp.bodyRequest[resp.columnName]
-        }
-        return { ...x, ...res }
+    const result = { ...resp.body, id: resp.params.rowId };
+    if (resp.drag) {
+      const fromStage = state.dataTickets[resp.drag.fromGroupId].results;
+      if (resp.drag.toGroupId) {
+        const toStage = state.dataTickets[resp.drag.toGroupId].results;
+        toStage.splice(resp.drag.newIndex, 0, fromStage.splice(resp.drag.oldIndex, 1)[0]);
+        toStage[resp.drag.newIndex] = { ...toStage[resp.drag.newIndex], ...result };
+        state.dataTickets[resp.drag.fromGroupId].totals--;
+        state.dataTickets[resp.drag.toGroupId].totals++;
+      } else {
+        array_move(fromStage, resp.drag.oldIndex, resp.drag.newIndex);
+        fromStage[resp.drag.newIndex] = { ...fromStage[resp.drag.newIndex], ...result };
       }
-      return x;
-    })
+    } else {
+      state.dataTickets[resp.key].results = state.dataTickets[resp.key].results.map(x => {
+        if (x.id === resp.rowId) {
+          const res = {
+            [resp.columnName]: resp.bodyRequest[resp.columnName]
+          }
+          return { ...x, ...res }
+        }
+        return x;
+      })
+    }
   },
   removeTickets(state, resp) {
     state.dataTickets[resp.key].results = state.dataTickets[resp.key].results.filter(x => x.id !== resp.id)
@@ -82,3 +97,14 @@ export default {
     category
   }
 };
+
+function array_move(arr, old_index, new_index) {
+  if (new_index >= arr.length) {
+    var k = new_index - arr.length + 1;
+    while (k--) {
+      arr.push(undefined);
+    }
+  }
+  arr.splice(new_index, 0, arr.splice(old_index, 1)[0]);
+  return arr;
+}

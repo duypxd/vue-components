@@ -12,7 +12,8 @@ export const dataTickets = {
         status: 1,
         members: [1, 2],
         client_name: "Client singapore",
-        assigneeByMe: true
+        assigneeByMe: true,
+        order: 1
       },
       {
         id: 2,
@@ -25,6 +26,7 @@ export const dataTickets = {
         status: 2,
         members: [3, 4],
         client_name: "Client India",
+        order: 2
       },
       {
         id: 3,
@@ -37,7 +39,8 @@ export const dataTickets = {
         status: 3,
         members: [4, 5, 6],
         client_name: "Client Korea",
-        assigneeByMe: true
+        assigneeByMe: true,
+        order: 3
       },
       {
         id: 4,
@@ -50,6 +53,7 @@ export const dataTickets = {
         status: 2,
         members: [6, 1],
         client_name: "Client Japan",
+        order: 4
       },
       {
         id: 5,
@@ -62,7 +66,8 @@ export const dataTickets = {
         status: 1,
         members: [3, 6],
         client_name: "Client US",
-        assigneeByMe: true
+        assigneeByMe: true,
+        order: 5
       },
     ],
   },
@@ -79,7 +84,8 @@ export const dataTickets = {
         status: 1,
         members: [1, 3],
         client_name: "Client singapore",
-        assigneeByMe: true
+        assigneeByMe: true,
+        order: 6
       },
       {
         id: 7,
@@ -92,6 +98,7 @@ export const dataTickets = {
         status: 2,
         members: [5, 3],
         client_name: "Client India",
+        order: 7
       },
       {
         id: 8,
@@ -104,7 +111,8 @@ export const dataTickets = {
         status: 3,
         members: [1, 3, 5],
         client_name: "Client Korea",
-        assigneeByMe: true
+        assigneeByMe: true,
+        order: 8
       },
       {
         id: 9,
@@ -117,6 +125,7 @@ export const dataTickets = {
         status: 2,
         members: [2, 3],
         client_name: "Client Japan",
+        order: 9
       },
 
       {
@@ -130,7 +139,8 @@ export const dataTickets = {
         status: 1,
         members: [1, 2],
         client_name: "Client US",
-        assigneeByMe: true
+        assigneeByMe: true,
+        order: 10
       },
       {
         id: 11,
@@ -143,7 +153,8 @@ export const dataTickets = {
         status: 1,
         members: [3, 4],
         client_name: "Client singapore",
-        assigneeByMe: true
+        assigneeByMe: true,
+        order: 11
       },
     ],
   }, 
@@ -160,6 +171,7 @@ export const dataTickets = {
         status: 2,
         members: [5, 6],
         client_name: "Client India",
+        order: 12
       },
       {
         id: 13,
@@ -172,7 +184,8 @@ export const dataTickets = {
         status: 3,
         members: [1, 4, 2],
         client_name: "Client Korea",
-        assigneeByMe: true
+        assigneeByMe: true,
+        order: 13
       },
       {
         id: 14,
@@ -185,6 +198,7 @@ export const dataTickets = {
         status: 2,
         members: [1],
         client_name: "Client Japan",
+        order: 14
       },
       {
         id: 15,
@@ -197,7 +211,8 @@ export const dataTickets = {
         status: 1,
         members: [2],
         client_name: "Client US",
-        assigneeByMe: true
+        assigneeByMe: true,
+        order: 15
       },
       {
         id: 16,
@@ -210,7 +225,8 @@ export const dataTickets = {
         status: 1,
         members: [3],
         client_name: "Client singapore",
-        assigneeByMe: true
+        assigneeByMe: true,
+        order: 16
       },
       {
         id: 17,
@@ -223,6 +239,7 @@ export const dataTickets = {
         status: 2,
         members: [4],
         client_name: "Client India",
+        order: 17
       },
       {
         id: 18,
@@ -235,7 +252,8 @@ export const dataTickets = {
         status: 3,
         members: [5],
         client_name: "Client Korea",
-        assigneeByMe: true
+        assigneeByMe: true,
+        order: 18
       },
     ],
   },
@@ -252,6 +270,7 @@ export const dataTickets = {
         status: 2,
         members: [6],
         client_name: "Client Japan",
+        order: 19
       },
       {
         id: 20,
@@ -264,7 +283,8 @@ export const dataTickets = {
         status: 1,
         members: [3, 1],
         client_name: "Client US",
-        assigneeByMe: true
+        assigneeByMe: true,
+        order: 20
       },
       {
         id: 21,
@@ -277,7 +297,8 @@ export const dataTickets = {
         status: 1,
         members: [2, 3],
         client_name: "Client singapore",
-        assigneeByMe: true
+        assigneeByMe: true,
+        order: 21
       },
       {
         id: 22,
@@ -290,6 +311,7 @@ export const dataTickets = {
         status: 2,
         members: [1, 4],
         client_name: "Client India",
+        order: 22
       },
       {
         id: 23,
@@ -302,7 +324,8 @@ export const dataTickets = {
         status: 3,
         members: [1, 3, 2],
         client_name: "Client Korea",
-        assigneeByMe: true
+        assigneeByMe: true,
+        order: 23
       },
       {
         id: 24,
@@ -315,6 +338,7 @@ export const dataTickets = {
         status: 2,
         members: [3],
         client_name: "Client Japan",
+        order: 24
       },
       {
         id: 25,
@@ -327,7 +351,8 @@ export const dataTickets = {
         status: 1,
         members: [4, 5],
         client_name: "Client US",
-        assigneeByMe: true
+        assigneeByMe: true,
+        order: 25
       },
     ],
   }

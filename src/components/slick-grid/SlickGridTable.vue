@@ -8,9 +8,6 @@
     @update:pagination="updatePagination"
     class="elevation-1 c-table"
     ref="extendSlick"
-    :hideActions="hideActions"
-    :idGroup="idGroup"
-    :group="group"
   >
     <template slot="filterRow">
       <tr class="filter-row" style="height: initial">
@@ -21,13 +18,8 @@
     </template>
     <template v-slot:body="{ items }">
       <tbody>
-        <tr v-for="dataRow in items" :key="dataRow.id">
-          <slot
-            v-for="column in headers"
-            name="cell"
-            :column="column"
-            :dataRow="dataRow"
-          ></slot>
+        <tr v-for="dataRow in items" :key="dataRow.id" :id="dataRow.id">
+          <slot v-for="column in headers" name="cell" :column="column" :dataRow="dataRow"></slot>
         </tr>
       </tbody>
     </template>
@@ -36,7 +28,7 @@
     </template>
     <!-- <template slot="actions-prepend">
       <slot name="actions-prepend"></slot>
-    </template> -->
+    </template>-->
   </VDataTableExtend>
 </template>
 <script>
@@ -55,16 +47,7 @@ export default {
     dragging: Boolean,
     headers: Array,
     itemsPerPage: Number,
-    groupRows: {
-      type: String,
-      default: "rows"
-    },
-    groupColumns: {
-      type: String,
-      default: "columns"
-    },
-    hideActions: Boolean,
-    idGroup: [Number, String],
+    indexGroup: [Number, String],
     group: Object
   },
   data() {
@@ -160,12 +143,27 @@ export default {
       const tbody = thisRef.$el.getElementsByTagName("tbody")[0];
       if (!tbody) return;
       const _self = this;
+      const stageId = _self.group.id;
+      tbody.setAttribute("stage-id", stageId);
+
       Sortable.create(tbody, {
         onEnd(event) {
-          const newIndex = event.newIndex;
+          const dataItems = JSON.parse(JSON.stringify(_self.items));
+          const fromGroupId = stageId;
+          const toGroupId = parseInt(event.to.getAttribute("stage-id"));
           const oldIndex = event.oldIndex;
-          const result = _self.array_move(_self.items, oldIndex, newIndex);
-          _self.$emit("dragAndDropRows", result);
+          const newIndex = event.newIndex;
+          const rowId = parseInt(event.item.id);
+          const items = _self.array_move(dataItems, oldIndex, newIndex); // result array move
+          const results = {
+            fromGroupId,
+            toGroupId,
+            oldIndex,
+            newIndex,
+            rowId,
+            items
+          }
+          _self.$emit("dragAndDropRows", results);
         },
         animation: 200,
         group: "rows",

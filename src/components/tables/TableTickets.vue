@@ -7,6 +7,8 @@
       :totals="itemsTickets.totals"
       :itemsPerPage="20"
       :pagination.sync="pagination"
+      :indexGroup="indexGroup"
+      :group="group"
       @dragAndDropRows="resp => $emit('dragAndDropRows', resp)"
     >
       <template slot="cell" slot-scope="props">
@@ -71,7 +73,9 @@ export default {
   props: {
     itemsTickets: Object,
     totals: Number,
-    isLoading: Boolean
+    isLoading: Boolean,
+    indexGroup: [String, Number],
+    group: Object
   },
   data() {
     return {

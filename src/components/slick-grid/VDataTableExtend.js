@@ -55,21 +55,15 @@ export default {
     },
     genTBody() {
       const children = this.genItems();
-      let tbody;
       if (!this.itemsLength && !this.items.length || !this.filteredItems.length) {
-        tbody = this.$createElement("tbody", children);
-      } else {
-        tbody = this.$createElement("transition-group", {
-          props: {
-            tag: "tbody",
-            name: this.dragging ? "flip-list" : null
-          }
-        }, children)
+        return this.$createElement('tbody', children);
       }
-      setTimeout(() => {
-        tbody.elm.setAttribute("id", this.idGroup);
-        tbody.elm.setAttribute("data-group", JSON.stringify(this.group))
-      }, 0);
+      const tbody = this.$createElement('transition-group', {
+        props: {
+          tag: 'tbody',
+          name: this.dragging ? 'flip-list' : null
+        }
+      }, children)
       return tbody;
     },
   },
@@ -77,8 +71,6 @@ export default {
     dragging: {
       type: Boolean,
       default: false
-    },
-    idGroup: [Number, String],
-    group: Object
+    }
   }
 };

@@ -11,6 +11,7 @@
         :isLoading="isLoading"
         @updateTickets="evt => $emit('updateTickets', evt)"
         @removeTickets="evt => $emit('removeTickets', evt)"
+        @dragAndDropRows="evt => $emit('dragAndDropRows', evt)"
       />
     </v-tab-item>
   </v-tabs>

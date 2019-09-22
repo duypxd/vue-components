@@ -1,6 +1,6 @@
 <template>
   <td>
-    <v-chip small style="width: 100px" :color="showClassColor(nameCustom.name)" text-color="white">
+    <v-chip small style="width: 100px" :color="'#'+nameCustom.color" text-color="white">
       <v-menu
         style="width: 130px"
         v-model="menu"
@@ -16,7 +16,7 @@
             <v-btn
               class="px-2 white--text text-capitalize"
               small
-              :color="showClassColor(item.name)"
+              :color="'#'+item.color"
               @click="$emit('update', item.id); menu = false"
             >{{ item.id }}: {{ item.name }}</v-btn>
           </v-row>
@@ -41,21 +41,6 @@ export default {
   computed: {
     nameCustom() {
       return this.priority.find(x => x.id === this.dataRow.priority);
-    }
-  },
-  methods: {
-    showClassColor(name) {
-      if (name === "Very low") {
-        return "#512da8";
-      } else if (name === "Very high") {
-        return "#ff6f00";
-      } else if (name === "Low") {
-        return "#54979F";
-      } else if (name === "Normal") {
-        return "#f50057";
-      } else if (name === "High") {
-        return "#00c853";
-      }
     }
   }
 };

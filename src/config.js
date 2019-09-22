@@ -6,19 +6,19 @@ export const ticketConfig = [
 ]
 
 export const taskLevel = [
-  { id: 1, name: "Ignored" },
-  { id: 2, name: "Backlog" },
-  { id: 3, name: "Evaluate" },
-  { id: 4, name: "Review" },
-  { id: 5, name: "Final result" }
+  { id: 1, name: "Ignored" , color: "1DAAE5"},
+  { id: 2, name: "Backlog" , color: "6BE51D"},
+  { id: 3, name: "Evaluate" , color: "1C5045"},
+  { id: 4, name: "Review" , color: "831DE5"},
+  { id: 5, name: "Final result" , color: "E51D64"}
 ]
 
 export const priority = [
-  { id: 1, name: "Very low" },
-  { id: 2, name: "Low" },
-  { id: 3, name: "Normal" },
-  { id: 4, name: "High" },
-  { id: 5, name: "Very high" }
+  { id: 1, name: "Very low", color: "512da8" },
+  { id: 2, name: "Low", color: "54979F" },
+  { id: 3, name: "Normal", color: "f50057" },
+  { id: 4, name: "High", color: "00c853" },
+  { id: 5, name: "Very high", color: "ff6f00" }
 ];
 
 export const itemStatus = [

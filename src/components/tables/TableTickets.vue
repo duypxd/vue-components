@@ -22,7 +22,7 @@
       </template>
       <template slot="footer">
         <div>
-          <v-btn outlined color="primary" @click="isShow = true">
+          <v-btn outlined color="primary" @click="isShow = true; stageGroup = keyGroup">
             <span>Add new</span>
             <v-icon class="pl-1">add</v-icon>
           </v-btn>
@@ -36,12 +36,18 @@
       title="Confirm delete"
       messageConfirm="Are you sure want to delete this item?"
     />
+    <AddTickets
+      :isShow="isShow"
+      @closeModal="isShow = false; stageGroup={}"
+      :keyGroup="stageGroup"
+    />
   </div>
 </template>
 
 <script>
 import SlickGridTable from "../../components/slick-grid/SlickGridTable";
 import DeleteConfirm from "../../components/dialogs/DeleteConfirm";
+import AddTickets from "../../components/dialogs/AddTickets";
 
 import TdCategory from "../cells/tickets/TdCategory";
 import TdClient from "../cells/tickets/TdClient";
@@ -58,6 +64,7 @@ export default {
   components: {
     SlickGridTable,
     DeleteConfirm,
+    AddTickets,
 
     TdCategory,
     TdClient,
@@ -75,6 +82,7 @@ export default {
     totals: Number,
     isLoading: Boolean,
     indexGroup: [String, Number],
+    keyGroup: Object,
     group: Object
   },
   data() {
@@ -83,6 +91,7 @@ export default {
       itemDelete: null,
       isShowModalDelete: false,
       pagination: {},
+      stageGroup: {},
       headers: [
         {
           visible: true,
@@ -210,6 +219,9 @@ export default {
       this.isShowModalDelete = true;
       this.itemDelete = val;
     }
+  },
+  mounted() {
+    this.stageGroup = this.keyGroup;
   }
 };
 </script>

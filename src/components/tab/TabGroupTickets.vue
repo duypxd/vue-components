@@ -5,7 +5,7 @@
     </v-tabs>
     <v-tabs-items v-model="tabsModel">
       <v-tab-item v-for="item in statusTickets" :key="item.id">
-        <slot name="group" :dataKeyGroup="dataKeyGroup(item.key)" />
+        <slot name="group" :dataKeyGroup="dataKeyGroup(item.key)" :keyName="item.name"/>
       </v-tab-item>
     </v-tabs-items>
   </div>

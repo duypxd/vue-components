@@ -37,15 +37,16 @@
             <template
               slot="group"
               v-if="$route.params.type === 'group'"
-              slot-scope="{dataKeyGroup}"
+              slot-scope="{dataKeyGroup, keyName}"
             >
               <div v-for="list in dataTickets" :key="list.id">
-                <div class="pa-2 title">{{(dataKeyGroup.find(x => x.id === list.id) || {}).name}}</div>
+                <div class="pa-2 title">{{convertKeyGroup(dataKeyGroup, list.id).name}}</div>
                 <TableTickets
                   :itemsTickets="list"
                   :isLoading="isLoading"
                   :indexGroup="list.id"
                   :group="list"
+                  :keyGroup="convertKeyGroup(dataKeyGroup, list.id, keyName)"
                   @updateTickets="updateTickets({...$event, key: list.id})"
                   @removeTickets="removeTickets({...$event, key: list.id})"
                   @dragAndDropRows="dragAndDropRows"
@@ -91,6 +92,10 @@ export default {
     ...mapActions("tickets/category", ["getDataCategory"]),
     getTickets(type) {
       this.getDataTickets(type);
+    },
+    convertKeyGroup(arr, id, name) {
+      var object = arr.find(x => x.id === id);
+      return { ...object, keyName: name };
     },
     redirectRoute() {
       if (!this.$route.params.listType) {

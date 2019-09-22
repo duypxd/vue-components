@@ -60,10 +60,15 @@ async function updateTickets(req) {
   return req;
 }
 
+async function createNewTickets(req) {
+  return req;
+}
+
 
 export default {
   getDataTickets,
   removeTickets,
   dragAndDropRows,
-  updateTickets
+  updateTickets,
+  createNewTickets
 }

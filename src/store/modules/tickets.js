@@ -54,8 +54,8 @@ const mutations = {
     state.dataTickets = response;
   },
   updateTickets(state, resp) {
-    const result = { ...resp.body, id: resp.params.rowId };
     if (resp.drag) {
+      const result = { ...resp.body, id: resp.params.rowId };
       const fromStage = state.dataTickets[resp.drag.fromGroupId].results;
       if (resp.drag.toGroupId) {
         const toStage = state.dataTickets[resp.drag.toGroupId].results;

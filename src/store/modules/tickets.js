@@ -57,7 +57,7 @@ const mutations = {
     state.dataTickets = response;
   },
   createNewTickets(state, resp) {
-    state.dataTickets[resp.keyId].results.push(resp)
+    state.dataTickets[resp.keyId].results.push(resp);
     state.dataTickets[resp.keyId].totals++;
   },
   updateTickets(state, resp) {

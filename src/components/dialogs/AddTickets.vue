@@ -55,7 +55,7 @@
               item-value="id"
               item-text="name"
               :rules="[v => !!v || 'This field is required']"
-              :disabled="keyGroup.keyName === 'Priority' ? true : false"
+              :disabled="keyGroup && keyGroup.keyName === 'Priority' ? true : false"
             >
               <template v-slot:selection="{ item, index }">
                 <v-chip v-if="index === 0" :color="'#'+item.color" small class="white--text">
@@ -73,7 +73,7 @@
               item-value="id"
               item-text="name"
               :rules="[v => !!v || 'This field is required']"
-              :disabled="keyGroup.keyName === 'Urgency' ? true : false"
+              :disabled="keyGroup && keyGroup.keyName === 'Urgency' ? true : false"
             >
               <template v-slot:selection="{ item, index }">
                 <v-chip v-if="index === 0" :color="'#'+item.color" small class="white--text">
@@ -91,7 +91,7 @@
               item-value="id"
               item-text="name"
               :rules="[v => !!v || 'This field is required']"
-              :disabled="keyGroup.keyName === 'Status' ? true : false"
+              :disabled="keyGroup && keyGroup.keyName === 'Status' ? true : false"
             >
               <template v-slot:selection="{ item, index }">
                 <v-chip v-if="index === 0" :color="item.color" small class="white--text">
@@ -109,7 +109,7 @@
               item-value="id"
               item-text="name"
               :rules="[v => !!v || 'This field is required']"
-              :disabled="keyGroup.keyName === 'Category' ? true : false"
+              :disabled="keyGroup && keyGroup.keyName === 'Category' ? true : false"
             >
               <template v-slot:selection="{ item, index }">
                 <v-chip v-if="index === 0" :color="`#`+item.color" small class="white--text">
@@ -190,14 +190,16 @@ export default {
   },
   watch: {
     keyGroup(val) {
-      if (val.keyName === "Status") {
-        this.status_id = val.id;
-      } else if (val.keyName === "Urgency") {
-        this.urgency = val.id;
-      } else if (val.keyName === "Priority") {
-        this.priority_id = val.id;
-      } else if (val.keyName === "Category") {
-        this.category_id = val.id;
+      if (val) {
+        if (val.keyName === "Status") {
+          this.status_id = val.id;
+        } else if (val.keyName === "Urgency") {
+          this.urgency = val.id;
+        } else if (val.keyName === "Priority") {
+          this.priority_id = val.id;
+        } else if (val.keyName === "Category") {
+          this.category_id = val.id;
+        }
       }
     }
   }

@@ -9,6 +9,7 @@
       <TableTickets
         :itemsTickets="itemsTickets"
         :isLoading="isLoading"
+        :keyGroup="keyGroup"
         @updateTickets="evt => $emit('updateTickets', evt)"
         @removeTickets="evt => $emit('removeTickets', evt)"
         @dragAndDropRows="evt => $emit('dragAndDropRows', evt)"
@@ -25,7 +26,8 @@ export default {
   },
   props: {
     itemsTickets: [Array, Object],
-    isLoading: Boolean
+    isLoading: Boolean,
+    keyGroup: Object
   },
   data() {
     return {

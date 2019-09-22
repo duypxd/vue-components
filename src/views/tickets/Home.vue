@@ -24,6 +24,7 @@
             v-if="$route.params.type === 'table'"
             :itemsTickets="dataTickets[0]"
             :isLoading="isLoading"
+            :keyGroup="{id: 0}"
             @updateTickets="updateTickets({...$event, key: 0})"
             @removeTickets="removeTickets({...$event, key: 0})"
             @getTickets="getTickets"

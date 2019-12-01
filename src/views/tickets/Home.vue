@@ -9,7 +9,7 @@
           <v-row no-gutters justify="space-between">
             <v-tooltip bottom>
               <template v-slot:activator="{ on }">
-                <v-btn primary v-on="on" icon @click="isShow = true">
+                <v-btn primary icon v-on="on" @click="isShow = true">
                   <v-icon>device_hub</v-icon>
                 </v-btn>
               </template>
@@ -22,11 +22,11 @@
         <v-col sm="12">
           <TabViewTickets
             v-if="$route.params.type === 'table'"
-            :itemsTickets="dataTickets[0]"
-            :isLoading="isLoading"
-            :keyGroup="{id: 0}"
-            @updateTickets="updateTickets({...$event, key: 0})"
-            @removeTickets="removeTickets({...$event, key: 0})"
+            :items-tickets="dataTickets[0]"
+            :is-loading="isLoading"
+            :key-group="{ id: 0 }"
+            @updateTickets="updateTickets({ ...$event, key: 0 })"
+            @removeTickets="removeTickets({ ...$event, key: 0 })"
             @getTickets="getTickets"
             @dragAndDropRows="dragAndDropRows"
           />
@@ -36,20 +36,22 @@
             @getGroupTypeName="getDataTickets"
           >
             <template
-              slot="group"
               v-if="$route.params.type === 'group'"
-              slot-scope="{dataKeyGroup, keyName}"
+              slot="group"
+              slot-scope="{ dataKeyGroup, keyName }"
             >
               <div v-for="list in dataTickets" :key="list.id">
-                <div class="pa-2 title">{{convertKeyGroup(dataKeyGroup, list.id).name}}</div>
+                <div class="pa-2 title">
+                  {{ convertKeyGroup(dataKeyGroup, list.id).name }}
+                </div>
                 <TableTickets
-                  :itemsTickets="list"
-                  :isLoading="isLoading"
-                  :indexGroup="list.id"
+                  :items-tickets="list"
+                  :is-loading="isLoading"
+                  :index-group="list.id"
                   :group="list"
-                  :keyGroup="convertKeyGroup(dataKeyGroup, list.id, keyName)"
-                  @updateTickets="updateTickets({...$event, key: list.id})"
-                  @removeTickets="removeTickets({...$event, key: list.id})"
+                  :key-group="convertKeyGroup(dataKeyGroup, list.id, keyName)"
+                  @updateTickets="updateTickets({ ...$event, key: list.id })"
+                  @removeTickets="removeTickets({ ...$event, key: list.id })"
                   @dragAndDropRows="dragAndDropRows"
                 />
               </div>
@@ -58,7 +60,7 @@
         </v-col>
       </v-row>
     </v-col>
-    <ListCategory :isShow="isShow" @cancel="isShow = false" />
+    <ListCategory :is-show="isShow" @cancel="isShow = false" />
   </v-row>
 </template>
 <script>
@@ -173,11 +175,6 @@ export default {
   computed: {
     ...mapGetters("tickets", ["dataTickets", "isLoading"])
   },
-  mounted() {
-    this.getTickets({ type: "All", key: "Not Filter", value: "" });
-    this.getDataCategory();
-    this.redirectRoute();
-  },
   watch: {
     $route(val) {
       if (val) {
@@ -188,6 +185,11 @@ export default {
         }
       }
     }
+  },
+  mounted() {
+    this.getTickets({ type: "All", key: "Not Filter", value: "" });
+    this.getDataCategory();
+    this.redirectRoute();
   }
 };
 </script>

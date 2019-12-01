@@ -3,8 +3,8 @@ import { dataCategory } from "../mock-data/data-category";
 async function getDataCategory() {
   return {
     results: dataCategory,
-    count: dataCategory.length,
-  }
+    count: dataCategory.length
+  };
 }
 
 async function createCategory(req) {
@@ -15,11 +15,12 @@ async function createCategory(req) {
 }
 
 async function updateCategory(req) {
-  const results = dataCategory.find(x => x.id === req.rowId)
+  const results = dataCategory.find(x => x.id === req.rowId);
   return {
     ...results,
-    [req.columnName]: results[req.columnName] = req.bodyRequest[req.columnName]
-  }
+    [req.columnName]: (results[req.columnName] =
+      req.bodyRequest[req.columnName])
+  };
 }
 
 async function removeCategory(req) {
@@ -31,4 +32,4 @@ export default {
   removeCategory,
   createCategory,
   updateCategory
-}
+};

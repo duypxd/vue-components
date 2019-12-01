@@ -1,6 +1,11 @@
 import moment from "moment";
 function timeFormat(time) {
-  return new Date(moment().utc(time).local().format(time));
+  return new Date(
+    moment()
+      .utc(time)
+      .local()
+      .format(time)
+  );
 }
 var date = new Date();
 var days = date.getDate() + 1;
@@ -14,7 +19,7 @@ export const dataTimeLine = [
     },
     created: timeFormat(`YYYY-MM-${days - 1} 19:12:10.000Z`),
     name: `Task time line 1`,
-    color: '#' + Math.floor(Math.random() * 16777215).toString(16),
+    color: "#" + Math.floor(Math.random() * 16777215).toString(16),
     last_name: `Xuan Duy`,
     first_name: `Pham`
   },
@@ -26,7 +31,7 @@ export const dataTimeLine = [
     },
     created: timeFormat(`YYYY-MM-${days - 1} 19:12:10.000Z`),
     name: `Task time line 1.1`,
-    color: '#' + Math.floor(Math.random() * 16777215).toString(16),
+    color: "#" + Math.floor(Math.random() * 16777215).toString(16),
     last_name: `Xuan Duy`,
     first_name: `Pham`
   },
@@ -38,7 +43,7 @@ export const dataTimeLine = [
     },
     created: timeFormat(`YYYY-MM-${days - 1} 19:12:10.000Z`),
     name: `Task time line 1.2`,
-    color: '#' + Math.floor(Math.random() * 16777215).toString(16),
+    color: "#" + Math.floor(Math.random() * 16777215).toString(16),
     last_name: `Xuan Duy`,
     first_name: `Pham`
   },
@@ -50,7 +55,7 @@ export const dataTimeLine = [
     },
     created: timeFormat(`YYYY-MM-${days - 2} 19:12:10.000Z`),
     name: `Task time line 2`,
-    color: '#' + Math.floor(Math.random() * 16777215).toString(16),
+    color: "#" + Math.floor(Math.random() * 16777215).toString(16),
     last_name: `Xuan Duy`,
     first_name: `Pham`
   },
@@ -62,7 +67,7 @@ export const dataTimeLine = [
     },
     created: timeFormat(`YYYY-MM-${days - 2} 12:34:10.000Z`),
     name: `Task time line 2.1`,
-    color: '#' + Math.floor(Math.random() * 16777215).toString(16),
+    color: "#" + Math.floor(Math.random() * 16777215).toString(16),
     last_name: `Xuan Duy`,
     first_name: `Pham`
   },
@@ -74,7 +79,7 @@ export const dataTimeLine = [
     },
     created: timeFormat(`YYYY-MM-${days - 3} 19:11:10.000Z`),
     name: `Task time line 3`,
-    color: '#' + Math.floor(Math.random() * 16777215).toString(16),
+    color: "#" + Math.floor(Math.random() * 16777215).toString(16),
     last_name: `Xuan Duy`,
     first_name: `Pham`
   },
@@ -86,7 +91,7 @@ export const dataTimeLine = [
     },
     created: timeFormat(`YYYY-MM-${days - 4} 19:12:10.000Z`),
     name: `Task time line 4`,
-    color: '#' + Math.floor(Math.random() * 16777215).toString(16),
+    color: "#" + Math.floor(Math.random() * 16777215).toString(16),
     last_name: `Xuan Duy`,
     first_name: `Pham`
   },
@@ -98,7 +103,7 @@ export const dataTimeLine = [
     },
     created: timeFormat(`YYYY-MM-${days - 4} 12:34:10.000Z`),
     name: `Task time line 4.1`,
-    color: '#' + Math.floor(Math.random() * 16777215).toString(16),
+    color: "#" + Math.floor(Math.random() * 16777215).toString(16),
     last_name: `Xuan Duy`,
     first_name: `Pham`
   },
@@ -110,7 +115,7 @@ export const dataTimeLine = [
     },
     created: timeFormat(`YYYY-MM-${days - 5} 19:44:10.000Z`),
     name: `Task time line 5`,
-    color: '#' + Math.floor(Math.random() * 16777215).toString(16),
+    color: "#" + Math.floor(Math.random() * 16777215).toString(16),
     last_name: `Xuan Duy`,
     first_name: `Pham`
   },
@@ -122,7 +127,7 @@ export const dataTimeLine = [
     },
     created: timeFormat(`YYYY-MM-${days - 6} 19:12:10.000Z`),
     name: `Task time line 6`,
-    color: '#' + Math.floor(Math.random() * 16777215).toString(16),
+    color: "#" + Math.floor(Math.random() * 16777215).toString(16),
     last_name: `Xuan Duy`,
     first_name: `Pham`
   },
@@ -134,7 +139,7 @@ export const dataTimeLine = [
     },
     created: timeFormat(`YYYY-MM-${days - 7} 19:12:10.000Z`),
     name: `Task time line 7`,
-    color: '#' + Math.floor(Math.random() * 16777215).toString(16),
+    color: "#" + Math.floor(Math.random() * 16777215).toString(16),
     last_name: `Xuan Duy`,
     first_name: `Pham`
   },
@@ -146,7 +151,7 @@ export const dataTimeLine = [
     },
     created: timeFormat(`YYYY-MM-${days - 8} 21:12:10.000Z`),
     name: `Task time line 8`,
-    color: '#' + Math.floor(Math.random() * 16777215).toString(16),
+    color: "#" + Math.floor(Math.random() * 16777215).toString(16),
     last_name: `Xuan Duy`,
     first_name: `Pham`
   },
@@ -158,7 +163,7 @@ export const dataTimeLine = [
     },
     created: timeFormat(`YYYY-MM-${days - 9} 04:12:10.000Z`),
     name: `Task time line 9`,
-    color: '#' + Math.floor(Math.random() * 16777215).toString(16),
+    color: "#" + Math.floor(Math.random() * 16777215).toString(16),
     last_name: `Xuan Duy`,
     first_name: `Pham`
   },
@@ -170,7 +175,7 @@ export const dataTimeLine = [
     },
     created: timeFormat(`YYYY-MM-${days - 9} 12:32:10.000Z`),
     name: `Task time line 9.1`,
-    color: '#' + Math.floor(Math.random() * 16777215).toString(16),
+    color: "#" + Math.floor(Math.random() * 16777215).toString(16),
     last_name: `Xuan Duy`,
     first_name: `Pham`
   },
@@ -182,7 +187,7 @@ export const dataTimeLine = [
     },
     created: timeFormat(`YYYY-MM-${days - 10} 19:21:10.000Z`),
     name: `Task time line 10`,
-    color: '#' + Math.floor(Math.random() * 16777215).toString(16),
+    color: "#" + Math.floor(Math.random() * 16777215).toString(16),
     last_name: `Xuan Duy`,
     first_name: `Pham`
   },
@@ -194,7 +199,7 @@ export const dataTimeLine = [
     },
     created: timeFormat(`YYYY-MM-${days - 11} 03:44:10.000Z`),
     name: `Task time line 11`,
-    color: '#' + Math.floor(Math.random() * 16777215).toString(16),
+    color: "#" + Math.floor(Math.random() * 16777215).toString(16),
     last_name: `Xuan Duy`,
     first_name: `Pham`
   },
@@ -206,7 +211,7 @@ export const dataTimeLine = [
     },
     created: timeFormat(`YYYY-MM-${days - 12} 19:21:10.000Z`),
     name: `Task time line 12`,
-    color: '#' + Math.floor(Math.random() * 16777215).toString(16),
+    color: "#" + Math.floor(Math.random() * 16777215).toString(16),
     last_name: `Xuan Duy`,
     first_name: `Pham`
   },
@@ -218,7 +223,7 @@ export const dataTimeLine = [
     },
     created: timeFormat(`YYYY-MM-${days - 12} 19:21:10.000Z`),
     name: `Task time line 12.1`,
-    color: '#' + Math.floor(Math.random() * 16777215).toString(16),
+    color: "#" + Math.floor(Math.random() * 16777215).toString(16),
     last_name: `Xuan Duy`,
     first_name: `Pham`
   },
@@ -230,7 +235,7 @@ export const dataTimeLine = [
     },
     created: timeFormat(`YYYY-MM-${days - 12} 19:21:10.000Z`),
     name: `Task time line 12.2`,
-    color: '#' + Math.floor(Math.random() * 16777215).toString(16),
+    color: "#" + Math.floor(Math.random() * 16777215).toString(16),
     last_name: `Xuan Duy`,
     first_name: `Pham`
   },
@@ -242,7 +247,7 @@ export const dataTimeLine = [
     },
     created: timeFormat(`YYYY-MM-${days - 13} 03:54:10.000Z`),
     name: `Task time line 13`,
-    color: '#' + Math.floor(Math.random() * 16777215).toString(16),
+    color: "#" + Math.floor(Math.random() * 16777215).toString(16),
     last_name: `Xuan Duy`,
     first_name: `Pham`
   },
@@ -254,7 +259,7 @@ export const dataTimeLine = [
     },
     created: timeFormat(`YYYY-MM-${days - 14} 06:21:10.000Z`),
     name: `Task time line 14`,
-    color: '#' + Math.floor(Math.random() * 16777215).toString(16),
+    color: "#" + Math.floor(Math.random() * 16777215).toString(16),
     last_name: `Xuan Duy`,
     first_name: `Pham`
   },
@@ -266,7 +271,7 @@ export const dataTimeLine = [
     },
     created: timeFormat(`YYYY-MM-${days - 15} 04:11:10.000Z`),
     name: `Task time line 15`,
-    color: '#' + Math.floor(Math.random() * 16777215).toString(16),
+    color: "#" + Math.floor(Math.random() * 16777215).toString(16),
     last_name: `Xuan Duy`,
     first_name: `Pham`
   },
@@ -278,7 +283,7 @@ export const dataTimeLine = [
     },
     created: timeFormat(`YYYY-MM-${days - 15} 04:11:10.000Z`),
     name: `Task time line 15.1`,
-    color: '#' + Math.floor(Math.random() * 16777215).toString(16),
+    color: "#" + Math.floor(Math.random() * 16777215).toString(16),
     last_name: `Xuan Duy`,
     first_name: `Pham`
   },
@@ -290,7 +295,7 @@ export const dataTimeLine = [
     },
     created: timeFormat(`YYYY-MM-${days - 16} 08:42:10.000Z`),
     name: `Task time line 16`,
-    color: '#' + Math.floor(Math.random() * 16777215).toString(16),
+    color: "#" + Math.floor(Math.random() * 16777215).toString(16),
     last_name: `Xuan Duy`,
     first_name: `Pham`
   },
@@ -302,7 +307,7 @@ export const dataTimeLine = [
     },
     created: timeFormat(`YYYY-MM-${days - 16} 07:42:10.000Z`),
     name: `Task time line 16.1`,
-    color: '#' + Math.floor(Math.random() * 16777215).toString(16),
+    color: "#" + Math.floor(Math.random() * 16777215).toString(16),
     last_name: `Xuan Duy`,
     first_name: `Pham`
   },
@@ -314,7 +319,7 @@ export const dataTimeLine = [
     },
     created: timeFormat(`YYYY-MM-${days - 17} 22:32:10.000Z`),
     name: `Task time line 17`,
-    color: '#' + Math.floor(Math.random() * 16777215).toString(16),
+    color: "#" + Math.floor(Math.random() * 16777215).toString(16),
     last_name: `Xuan Duy`,
     first_name: `Pham`
   },
@@ -326,7 +331,7 @@ export const dataTimeLine = [
     },
     created: timeFormat(`YYYY-MM-${days - 17} 22:32:10.000Z`),
     name: `Task time line 17.1`,
-    color: '#' + Math.floor(Math.random() * 16777215).toString(16),
+    color: "#" + Math.floor(Math.random() * 16777215).toString(16),
     last_name: `Xuan Duy`,
     first_name: `Pham`
   },
@@ -338,7 +343,7 @@ export const dataTimeLine = [
     },
     created: timeFormat(`YYYY-MM-${days - 17} 17:32:10.000Z`),
     name: `Task time line 17.2`,
-    color: '#' + Math.floor(Math.random() * 16777215).toString(16),
+    color: "#" + Math.floor(Math.random() * 16777215).toString(16),
     last_name: `Xuan Duy`,
     first_name: `Pham`
   },
@@ -350,8 +355,8 @@ export const dataTimeLine = [
     },
     created: timeFormat(`YYYY-MM-${days - 17} 11:36:10.000Z`),
     name: `Task time line 17.3`,
-    color: '#' + Math.floor(Math.random() * 16777215).toString(16),
+    color: "#" + Math.floor(Math.random() * 16777215).toString(16),
     last_name: `Xuan Duy`,
     first_name: `Pham`
-  },
+  }
 ];

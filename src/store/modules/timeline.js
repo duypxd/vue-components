@@ -5,12 +5,12 @@ const state = {
 };
 
 const getters = {
-  dataTimeLine: state => state.dataTimeLine,
+  dataTimeLine: state => state.dataTimeLine
 };
 
 const actions = {
   async getDataTimeLine({ commit }) {
-    commit("getDataTimeLine", await api.getDataTimeLineFromApi())
+    commit("getDataTimeLine", await api.getDataTimeLineFromApi());
   }
 };
 
@@ -26,4 +26,4 @@ export default {
   getters,
   actions,
   mutations
-}
+};

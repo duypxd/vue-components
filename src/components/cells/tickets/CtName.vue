@@ -5,8 +5,8 @@
       name="input-7-1"
       :value="dataRow.name"
       class="ma-0 pa-0 custom-text-field input-size"
-      @change="$emit('update', $event)"
       rows="1"
+      @change="$emit('update', $event)"
     ></v-textarea>
   </td>
 </template>

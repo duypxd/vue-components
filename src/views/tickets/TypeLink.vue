@@ -1,12 +1,12 @@
 <template>
   <div>
-    <v-tooltip bottom v-for="item in items" :key="item.id">
-      <template v-slot:activator="{on}">
-        <v-btn v-on="on" icon :to="item.route" active-class="primary--text">
-          <v-icon>{{item.icon}}</v-icon>
+    <v-tooltip v-for="item in items" :key="item.id" bottom>
+      <template v-slot:activator="{ on }">
+        <v-btn icon :to="item.route" active-class="primary--text" v-on="on">
+          <v-icon>{{ item.icon }}</v-icon>
         </v-btn>
       </template>
-      <span>{{item.tooltip}}</span>
+      <span>{{ item.tooltip }}</span>
     </v-tooltip>
   </div>
 </template>

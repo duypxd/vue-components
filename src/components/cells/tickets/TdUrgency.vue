@@ -8,16 +8,25 @@
         :close-on-content-click="false"
       >
         <template v-slot:activator="{ on }">
-          <span v-on="on" class="white--text">{{ nameCustom.name }}</span>
+          <span class="white--text" v-on="on">{{ nameCustom.name }}</span>
         </template>
         <v-list>
-          <v-row no-gutters v-for="(item, index) in taskLevel" :key="index" class="ma-2">
+          <v-row
+            v-for="(item, index) in taskLevel"
+            :key="index"
+            no-gutters
+            class="ma-2"
+          >
             <v-btn
               class="px-2 white--text text-capitalize"
-              :color="'#'+item.color"
+              :color="'#' + item.color"
               small
-              @click="$emit('update', item.id); menu = false"
-            >{{ item.id }}: {{ item.name }}</v-btn>
+              @click="
+                $emit('update', item.id);
+                menu = false;
+              "
+              >{{ item.id }}: {{ item.name }}</v-btn
+            >
           </v-row>
         </v-list>
       </v-menu>
@@ -27,15 +36,15 @@
 <script>
 import { taskLevel } from "../../../config";
 export default {
+  props: {
+    dataRow: Object,
+    column: Object
+  },
   data() {
     return {
       taskLevel,
       menu: false
     };
-  },
-  props: {
-    dataRow: Object,
-    column: Object
   },
   computed: {
     nameCustom() {

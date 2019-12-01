@@ -1,8 +1,13 @@
 <template>
   <v-avatar :size="`${avatarSize}px`" :color="backgroundColor">
-    <img :src="imageUrl" :alt="name" v-if="showAvatar">
-    <span v-else class="white--text" :style="`font-size: ${avatarSize/2}px`">{{ nameSymbol }}</span>
-    <slot/>
+    <img v-if="showAvatar" :src="imageUrl" :alt="name" />
+    <span
+      v-else
+      class="white--text"
+      :style="`font-size: ${avatarSize / 2}px`"
+      >{{ nameSymbol }}</span
+    >
+    <slot />
   </v-avatar>
 </template>
 <script>
@@ -14,7 +19,7 @@ export default {
       default: "primary"
     },
     imageUrl: String,
-    name: String,
+    name: String
   },
   computed: {
     showAvatar() {
@@ -22,7 +27,7 @@ export default {
     },
     nameSymbol: function() {
       if (this.imageUrl) return null;
-      if(!this.name) return "";
+      if (!this.name) return "";
       if (!this.name.trim().length) return "";
       let users = this.name.split(" ");
       if (users.length == 1) {

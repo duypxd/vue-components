@@ -1,7 +1,13 @@
 <template>
   <div class="my-1">
-    <div class="line-row" :style="{background: item.event.color,height:'5px',position:'relative'}">
-    </div>
+    <div
+      class="line-row"
+      :style="{
+        background: item.event.color,
+        height: '5px',
+        position: 'relative'
+      }"
+    ></div>
   </div>
 </template>
 
@@ -13,8 +19,7 @@ export default {
 };
 </script>
 <style scoped>
-.line-row{
+.line-row {
   border-radius: 2px;
 }
 </style>
-

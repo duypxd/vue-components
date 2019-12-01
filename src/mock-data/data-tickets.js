@@ -68,8 +68,8 @@ export const dataTickets = {
         client_name: "Client US",
         assigneeByMe: true,
         order: 5
-      },
-    ],
+      }
+    ]
   },
   2000: {
     results: [
@@ -155,9 +155,9 @@ export const dataTickets = {
         client_name: "Client singapore",
         assigneeByMe: true,
         order: 11
-      },
-    ],
-  }, 
+      }
+    ]
+  },
   3000: {
     results: [
       {
@@ -165,9 +165,9 @@ export const dataTickets = {
         title_ticket: "Tickets 12",
         received_date: new Date().toISOString(),
         ticket_id: 1992,
-        priority: 5, 
+        priority: 5,
         urgency: 2,
-        category: 3, 
+        category: 3,
         status: 2,
         members: [5, 6],
         client_name: "Client India",
@@ -254,8 +254,8 @@ export const dataTickets = {
         client_name: "Client Korea",
         assigneeByMe: true,
         order: 18
-      },
-    ],
+      }
+    ]
   },
   4000: {
     results: [
@@ -353,7 +353,7 @@ export const dataTickets = {
         client_name: "Client US",
         assigneeByMe: true,
         order: 25
-      },
-    ],
+      }
+    ]
   }
-}
+};

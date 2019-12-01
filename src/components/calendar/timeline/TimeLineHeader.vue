@@ -1,9 +1,22 @@
 <template>
-  <div :class="`v-calendar resource-viewer v-calendar-daily theme--${isDark} month-view`">
-    <div class="v-calendar-daily__head" :style="{marginRight: scrollPush + 'px'}">
-      <div v-for="h in hours" :key="h" class="v-calendar-daily_head-day text-xs-center">
-        <div class="v-calendar-daily_head-weekday">{{h%12+1}}</div>
-        <div class="v-calendar-daily_head-day-label">{{(h>=11) ? 'PM' : 'AM'}}</div>
+  <div
+    :class="
+      `v-calendar resource-viewer v-calendar-daily theme--${isDark} month-view`
+    "
+  >
+    <div
+      class="v-calendar-daily__head"
+      :style="{ marginRight: scrollPush + 'px' }"
+    >
+      <div
+        v-for="h in hours"
+        :key="h"
+        class="v-calendar-daily_head-day text-xs-center"
+      >
+        <div class="v-calendar-daily_head-weekday">{{ (h % 12) + 1 }}</div>
+        <div class="v-calendar-daily_head-day-label">
+          {{ h >= 11 ? "PM" : "AM" }}
+        </div>
       </div>
     </div>
   </div>
@@ -51,4 +64,3 @@ export default {
   font-size: 16px !important;
 }
 </style>
-

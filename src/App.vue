@@ -9,10 +9,10 @@
         </div>
       </v-content>
       <v-navigation-drawer
+        v-model="rightDrawer"
         class="setting-drawer"
         temporary
         right
-        v-model="rightDrawer"
         hide-overlay
         fixed
       >

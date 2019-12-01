@@ -4,15 +4,20 @@
       <div class="v-calendar-daily">
         <div class="v-calendar-daily__pane">
           <div class="v-calendar-daily__day-container">
-            <div v-for="h in hours" :key="h" class="v-calendar-daily__day v-past">
+            <div
+              v-for="h in hours"
+              :key="h"
+              class="v-calendar-daily__day v-past"
+            >
               <div v-for="(item, index) in timeLineGroup[h]" :key="index">
                 <TimeLineRow
                   :item="item"
                   :style="{
-                    marginLeft:positionItem(item.time.from, h),
-                    width:getDuration(item.time.from, item.time.to) * 100 + '%',
+                    marginLeft: positionItem(item.time.from, h),
+                    width:
+                      getDuration(item.time.from, item.time.to) * 100 + '%',
                     zIndex: '1',
-                    position: 'relative',
+                    position: 'relative'
                   }"
                 />
               </div>
@@ -30,21 +35,16 @@ export default {
   components: {
     TimeLineRow
   },
-  data() {
-    return {
-      hours: []
-    };
-  },
-  mounted() {
-    for (let i = 1; i <= 24; i++) {
-      this.hours.push(i);
-    }
-  },
   props: {
     list: {
       type: Array,
       default: () => []
     }
+  },
+  data() {
+    return {
+      hours: []
+    };
   },
   computed: {
     timeLineGroup() {
@@ -68,6 +68,11 @@ export default {
         }
       });
       return group;
+    }
+  },
+  mounted() {
+    for (let i = 1; i <= 24; i++) {
+      this.hours.push(i);
     }
   },
   methods: {
@@ -109,4 +114,3 @@ export default {
   border-bottom: none !important;
 }
 </style>
-

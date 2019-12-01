@@ -39,7 +39,7 @@ const actions = {
     commit("updateTickets", await api.updateTickets(req));
   },
   async removeTickets({ commit }, req) {
-    commit("removeTickets", await api.removeTickets(req))
+    commit("removeTickets", await api.removeTickets(req));
   },
   async dragAndDropRows({ commit }, req) {
     commit("dragAndDropRows", await api.dragAndDropRows(req));
@@ -66,28 +66,42 @@ const mutations = {
       const fromStage = state.dataTickets[resp.drag.fromGroupId].results;
       if (resp.drag.toGroupId) {
         const toStage = state.dataTickets[resp.drag.toGroupId].results;
-        toStage.splice(resp.drag.newIndex, 0, fromStage.splice(resp.drag.oldIndex, 1)[0]);
-        toStage[resp.drag.newIndex] = { ...toStage[resp.drag.newIndex], ...result };
+        toStage.splice(
+          resp.drag.newIndex,
+          0,
+          fromStage.splice(resp.drag.oldIndex, 1)[0]
+        );
+        toStage[resp.drag.newIndex] = {
+          ...toStage[resp.drag.newIndex],
+          ...result
+        };
         state.dataTickets[resp.drag.fromGroupId].totals--;
         state.dataTickets[resp.drag.toGroupId].totals++;
       } else {
         array_move(fromStage, resp.drag.oldIndex, resp.drag.newIndex);
-        fromStage[resp.drag.newIndex] = { ...fromStage[resp.drag.newIndex], ...result };
+        fromStage[resp.drag.newIndex] = {
+          ...fromStage[resp.drag.newIndex],
+          ...result
+        };
       }
     } else {
-      state.dataTickets[resp.key].results = state.dataTickets[resp.key].results.map(x => {
+      state.dataTickets[resp.key].results = state.dataTickets[
+        resp.key
+      ].results.map(x => {
         if (x.id === resp.rowId) {
           const res = {
             [resp.columnName]: resp.bodyRequest[resp.columnName]
-          }
-          return { ...x, ...res }
+          };
+          return { ...x, ...res };
         }
         return x;
-      })
+      });
     }
   },
   removeTickets(state, resp) {
-    state.dataTickets[resp.key].results = state.dataTickets[resp.key].results.filter(x => x.id !== resp.id)
+    state.dataTickets[resp.key].results = state.dataTickets[
+      resp.key
+    ].results.filter(x => x.id !== resp.id);
   },
   dragAndDropRows(state, response) {
     state.dataTickets.results = response;

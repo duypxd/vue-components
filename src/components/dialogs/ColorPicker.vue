@@ -2,13 +2,22 @@
   <div>
     <v-row>
       <v-col cols="12" sm="12">
-        <v-btn icon @click="togglePicker" :style="'background-color: ' + colorValue">
+        <v-btn
+          icon
+          :style="'background-color: ' + colorValue"
+          @click="togglePicker"
+        >
           <v-icon size="25" color="white">color_lens</v-icon>
         </v-btn>
       </v-col>
     </v-row>
     <v-dialog v-if="isShowDialogColor" v-model="displayPicker" width="225px">
-      <ChromePicker right :value="colors" @input="updateFromPicker" v-if="displayPicker" />
+      <ChromePicker
+        v-if="displayPicker"
+        right
+        :value="colors"
+        @input="updateFromPicker"
+      />
     </v-dialog>
   </div>
 </template>
@@ -34,6 +43,32 @@ export default {
       colorValue: "",
       displayPicker: false
     };
+  },
+  watch: {
+    colorValue(val) {
+      if (val) {
+        const dataColorPicker = {
+          colorValue: val,
+          labelName: this.labelName
+        };
+        this.updateColors(val);
+        this.$emit("emitColorValue", dataColorPicker);
+      }
+    },
+    labelName(val) {
+      if (val) {
+        this.labelName = val;
+        const dataColorPicker = {
+          colorValue: this.color,
+          labelName: val
+        };
+        this.$emit("emitColorValue", dataColorPicker);
+      }
+    }
+  },
+  mounted() {
+    this.setColor(this.color || "#000000");
+    this.labelName = this.text || "";
   },
   methods: {
     setColor(color) {
@@ -96,32 +131,6 @@ export default {
         target = e.target;
       if (el !== target) {
         this.hidePicker();
-      }
-    }
-  },
-  mounted() {
-    this.setColor(this.color || "#000000");
-    this.labelName = this.text || "";
-  },
-  watch: {
-    colorValue(val) {
-      if (val) {
-        const dataColorPicker = {
-          colorValue: val,
-          labelName: this.labelName
-        };
-        this.updateColors(val);
-        this.$emit("emitColorValue", dataColorPicker);
-      }
-    },
-    labelName(val) {
-      if (val) {
-        this.labelName = val;
-        const dataColorPicker = {
-          colorValue: this.color,
-          labelName: val
-        };
-        this.$emit("emitColorValue", dataColorPicker);
       }
     }
   }

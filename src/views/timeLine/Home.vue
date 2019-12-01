@@ -1,7 +1,10 @@
 <template>
   <div>
     <div>
-      <TimeLinePreview :previewData="timeLineConvert" @activePreviewDay="changeActiveDay" />
+      <TimeLinePreview
+        :preview-data="timeLineConvert"
+        @activePreviewDay="changeActiveDay"
+      />
     </div>
     <div>
       <TimeLineHeader class="timeline-preview-header" />

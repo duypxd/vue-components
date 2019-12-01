@@ -1,10 +1,12 @@
 <template>
   <div class="text-xs-center">
-    <v-dialog :value="dialogColor" @input="cancel" width="500" persistent>
+    <v-dialog :value="dialogColor" width="500" persistent @input="cancel">
       <v-card>
         <div class="primary">
           <v-row justify="center" align="center" no-gutters class="pa-3">
-            <div class="title font-weight-regular white--text">Create New Category</div>
+            <div class="title font-weight-regular white--text">
+              Create New Category
+            </div>
             <v-spacer></v-spacer>
             <v-btn class="ma-0" icon @click="cancel">
               <v-icon color="white">close</v-icon>
@@ -12,11 +14,11 @@
           </v-row>
         </div>
         <v-divider></v-divider>
-        <v-form class="pa-3" ref="form" lazy-validation>
+        <v-form ref="form" class="pa-3" lazy-validation>
           <v-row no-gutters class="my-1">
             <v-text-field
-              class="py-1"
               v-model="name"
+              class="py-1"
               :rules="[v => !!v || 'This field is required']"
               label="Name"
               required
@@ -24,13 +26,18 @@
           </v-row>
 
           <v-row no-gutters class="mb-2" align="center">
-            <ColorPicker :isShowDialogColor="true" @emitColorValue="change" />
-            <v-chip :color="`#`+color" text-color="white" class="ml-2">{{`#`+color}}</v-chip>
+            <ColorPicker
+              :is-show-dialog-color="true"
+              @emitColorValue="change"
+            />
+            <v-chip :color="`#` + color" text-color="white" class="ml-2">{{
+              `#` + color
+            }}</v-chip>
           </v-row>
 
           <v-textarea
-            label="Description"
             v-model="desc"
+            label="Description"
             class="ma-0 pa-2 custom-text-field fieldDes"
             rows="3"
           ></v-textarea>

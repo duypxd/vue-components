@@ -7,7 +7,7 @@
       <v-btn small icon @click="$emit('remove', dataRow.id)">
         <v-icon small>cancel</v-icon>
       </v-btn>
-      <v-btn small icon v-if="dataRow.assigneeByMe">
+      <v-btn v-if="dataRow.assigneeByMe" small icon>
         <v-icon small>person_add</v-icon>
       </v-btn>
     </v-row>

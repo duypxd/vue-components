@@ -4,7 +4,11 @@
       <div class="v-calendar-daily__scroll-area">
         <div class="v-calendar-daily__pane" style="height:400px">
           <div class="v-calendar-daily__day-container">
-            <div v-for="h in hours" :key="h" class="v-calendar-daily__day v-past">
+            <div
+              v-for="h in hours"
+              :key="h"
+              class="v-calendar-daily__day v-past"
+            >
               <div
                 style="height: 100%;position: absolute;border-right: 1px solid #e0e0e0;right: 0;"
               ></div>
@@ -12,10 +16,11 @@
                 <TimeLineRow
                   :item="item"
                   :style="{
-                    marginLeft:positionItem(item.time.from, h),
-                    width:getDuration(item.time.from, item.time.to) * 100 + '%',
+                    marginLeft: positionItem(item.time.from, h),
+                    width:
+                      getDuration(item.time.from, item.time.to) * 100 + '%',
                     zIndex: '1',
-                    position: 'relative',
+                    position: 'relative'
                   }"
                 />
               </div>
@@ -34,6 +39,12 @@ export default {
   components: {
     TimeLineRow
   },
+  props: {
+    list: {
+      type: Array,
+      default: () => []
+    }
+  },
   data() {
     return {
       hours: []
@@ -42,12 +53,6 @@ export default {
   mounted() {
     for (let i = 1; i <= 24; i++) {
       this.hours.push(i);
-    }
-  },
-  props: {
-    list: {
-      type: Array,
-      default: () => []
     }
   },
   computed: {
@@ -116,4 +121,3 @@ export default {
   overflow-y: hidden;
 }
 </style>
-

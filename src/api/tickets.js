@@ -4,7 +4,7 @@ import { dataTickets } from "../mock-data/data-tickets";
 function array_merge(myArray) {
   var arrayConvert = Object.keys(myArray).reduce((arr, key) => {
     const data = { results: myArray[key].results };
-    return arr.concat(data)
+    return arr.concat(data);
   }, []);
   var merge = arrayConvert.map(x => x.results);
   var mergeResults = [].concat.apply([], merge);
@@ -12,9 +12,9 @@ function array_merge(myArray) {
     0: {
       id: 1,
       results: mergeResults,
-      totals: mergeResults.length,
+      totals: mergeResults.length
     }
-  }
+  };
 }
 
 async function getDataTickets(req) {
@@ -26,22 +26,22 @@ async function getDataTickets(req) {
         0: {
           id: 1,
           results: resp,
-          totals: resp.length,
+          totals: resp.length
         }
-      }
+      };
     } else {
       return data;
     }
   } else if (req.type === "group") {
     var data = (dataTickets[req.idGroup] || {}).results;
     let groupBy = {};
-    data.forEach((item) => {
-      const results = data.filter(f => f[req.keyGroup] === item[req.keyGroup])
+    data.forEach(item => {
+      const results = data.filter(f => f[req.keyGroup] === item[req.keyGroup]);
       groupBy[item[req.keyGroup]] = {
         id: item[req.keyGroup],
         results,
-        totals: results.length,
-      }
+        totals: results.length
+      };
     });
     return groupBy;
   }
@@ -64,11 +64,10 @@ async function createNewTickets(req) {
   return req;
 }
 
-
 export default {
   getDataTickets,
   removeTickets,
   dragAndDropRows,
   updateTickets,
   createNewTickets
-}
+};

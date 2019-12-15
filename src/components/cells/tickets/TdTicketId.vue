@@ -1,5 +1,5 @@
 <template>
-  <td>{{dataRow.ticket_id}}</td>
+  <td>{{ dataRow.ticket_id }}</td>
 </template>
 <script>
 export default {

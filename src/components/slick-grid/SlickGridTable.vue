@@ -1,13 +1,13 @@
 <template>
   <VDataTableExtend
+    ref="extendSlick"
     :headers="headers"
     :items="items"
     :server-items-length="totals"
     :items-per-page="itemsPerPage"
     :options="pagination"
-    @update:pagination="updatePagination"
     class="elevation-1 c-table"
-    ref="extendSlick"
+    @update:pagination="updatePagination"
   >
     <template slot="filterRow">
       <tr class="filter-row" style="height: initial">
@@ -18,8 +18,13 @@
     </template>
     <template v-slot:body="{ items }">
       <tbody>
-        <tr v-for="dataRow in items" :key="dataRow.id" :id="dataRow.id">
-          <slot v-for="column in headers" name="cell" :column="column" :dataRow="dataRow"></slot>
+        <tr v-for="dataRow in items" :id="dataRow.id" :key="dataRow.id">
+          <slot
+            v-for="column in headers"
+            name="cell"
+            :column="column"
+            :dataRow="dataRow"
+          ></slot>
         </tr>
       </tbody>
     </template>
@@ -54,6 +59,14 @@ export default {
     return {
       drag: false
     };
+  },
+  mounted() {
+    this.dragAndDropRows();
+    this.dragAndDropColumn();
+  },
+  updated() {
+    this.dragAndDropRows();
+    this.dragAndDropColumn();
   },
   methods: {
     updatePagination(pagination) {
@@ -173,14 +186,6 @@ export default {
         }
       });
     }
-  },
-  mounted() {
-    this.dragAndDropRows();
-    this.dragAndDropColumn();
-  },
-  updated() {
-    this.dragAndDropRows();
-    this.dragAndDropColumn();
   }
 };
 </script>

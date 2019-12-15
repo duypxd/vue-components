@@ -3,19 +3,31 @@
     <v-menu offset-x>
       <template v-slot:activator="{ on }">
         <div class="display-1 cursor-menu" v-on="on">
-          {{monthName(monthYear.month)}}
-          <span class="text--secondary">{{monthYear.year}}</span>
+          {{ monthName(monthYear.month) }}
+          <span class="text--secondary">{{ monthYear.year }}</span>
         </div>
       </template>
-      <v-list @click.native.stop class="px-2">
+      <v-list class="px-2" @click.native.stop>
         <div class="title">Select the month of year</div>
         <v-divider class="mt-2"></v-divider>
         <v-row no-gutters align="center">
           <div style="width:80px">
-            <v-select class="px-1" v-model="month" :items="months" menu-props="auto" label="Month"></v-select>
+            <v-select
+              v-model="month"
+              class="px-1"
+              :items="months"
+              menu-props="auto"
+              label="Month"
+            ></v-select>
           </div>
           <div style="width:80px">
-            <v-select class="px-1" v-model="year" :items="years" menu-props="auto" label="Year"></v-select>
+            <v-select
+              v-model="year"
+              class="px-1"
+              :items="years"
+              menu-props="auto"
+              label="Year"
+            ></v-select>
           </div>
           <div>
             <v-btn class="my-0 primary" @click="submit">Ok</v-btn>
@@ -38,6 +50,12 @@ export default {
       month: null,
       year: null
     };
+  },
+  watch: {
+    monthYear({ month, year }) {
+      this.month = month;
+      this.year = year;
+    }
   },
   created() {
     for (let i = 1; i <= 12; i++) {
@@ -78,12 +96,6 @@ export default {
         "Nov",
         "Dec"
       ][month % 12];
-    }
-  },
-  watch: {
-    monthYear({ month, year }) {
-      this.month = month;
-      this.year = year;
     }
   }
 };

@@ -1,31 +1,31 @@
 <template>
   <MembersSelectMultipe
     class="custom"
-    :membersOption="membersOption"
+    :members-option="membersOption"
     :members_golbal="members_golbal"
     :title="title"
-    labelSearch="Search"
+    label-search="Search"
     :name="name"
     :path="path"
-    :keySearch="keySearch"
+    :key-search="keySearch"
     @select="selectMembers"
   >
-    <template slot-scope="{ items }" slot="section">
+    <template slot="section" slot-scope="{ items }">
       <v-tooltip v-for="item in items" :key="item.id" bottom>
         <template v-slot:activator="{ on }">
           <div v-on="on">
             <UserAvatar
               class="mx-1"
-              :avatarSize="32"
-              :imageUrl="(item || '').avatar"
+              :avatar-size="32"
+              :image-url="(item || '').avatar"
               :name="item.name"
             />
           </div>
         </template>
-        <span>{{item.name || ''}}</span>
+        <span>{{ item.name || "" }}</span>
       </v-tooltip>
     </template>
-    <template slot-scope="{ item }" slot="item">
+    <template slot="item" slot-scope="{ item }">
       <v-row align="center" style="width:100%">
         <v-col cols="2">
           <v-list-item-avatar class="border">
@@ -35,14 +35,14 @@
         <v-col cols="2">
           <UserAvatar
             class="mx-1"
-            :avatarSize="35"
-            :imageUrl="(item || '').avatar"
+            :avatar-size="35"
+            :image-url="(item || '').avatar"
             :name="item.name"
           />
         </v-col>
         <v-col cols="8">
-          <div>{{item.name}}</div>
-          <div class="caption text--secondary">{{item.user_name}}</div>
+          <div>{{ item.name }}</div>
+          <div class="caption text--secondary">{{ item.user_name }}</div>
         </v-col>
       </v-row>
     </template>
@@ -60,7 +60,7 @@ export default {
   },
   props: {
     membersOption: Array,
-    members_golbal: Array,
+    membersGolbal: Array,
     name: String,
     path: [Object, Array],
     keySearch: String,

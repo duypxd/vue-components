@@ -1,9 +1,22 @@
 <template>
-  <div :class="`v-calendar resource-viewer v-calendar-daily theme--${isDark} month-view`">
-    <div class="v-calendar-daily__head" :style="{marginRight: scrollPush + 'px'}">
-      <div v-for="h in hours" :key="h" class="v-calendar-daily_head-day text-xs-center">
-        <div class="v-calendar-daily_head-weekday">{{h%12+1}}</div>
-        <div class="v-calendar-daily_head-day-label">{{(h>=11) ? 'PM' : 'AM'}}</div>
+  <div
+    :class="
+      `v-calendar resource-viewer v-calendar-daily theme--${isDark} month-view`
+    "
+  >
+    <div
+      class="v-calendar-daily__head"
+      :style="{ marginRight: scrollPush + 'px' }"
+    >
+      <div
+        v-for="h in hours"
+        :key="h"
+        class="v-calendar-daily_head-day text-xs-center"
+      >
+        <div class="v-calendar-daily_head-weekday">{{ (h % 12) + 1 }}</div>
+        <div class="v-calendar-daily_head-day-label">
+          {{ h >= 11 ? "PM" : "AM" }}
+        </div>
       </div>
     </div>
   </div>
@@ -18,15 +31,15 @@ export default {
       scrollPush: 0
     };
   },
+  computed: {
+    ...mapGetters("theme", ["isDark"])
+  },
   mounted() {
     this.onResize();
     window.addEventListener("resize", this.onResize);
     for (let i = 0; i < 24; i++) {
       this.hours.push(i);
     }
-  },
-  computed: {
-    ...mapGetters("theme", ["isDark"])
   },
   methods: {
     onResize() {
@@ -51,4 +64,3 @@ export default {
   font-size: 16px !important;
 }
 </style>
-

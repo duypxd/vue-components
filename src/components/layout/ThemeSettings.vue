@@ -10,22 +10,28 @@
           <div class="color-option">
             <v-row wrap>
               <label
-                class="color-option--label flex xs6 pa-1"
                 v-for="(option, index) in themeColorOptions"
                 :key="index"
+                class="color-option--label flex xs6 pa-1"
               >
                 <input
+                  v-model="themeColorComputed"
                   type="radio"
                   name="color"
-                  v-bind:value="option.key"
-                  v-model="themeColorComputed"
+                  :value="option.key"
                 />
                 <span class="color-option--item bg">
                   <span class="overlay">
                     <span class="material-icons">check</span>
                   </span>
-                  <span class="color-option--item--header sideNav" :class="option.value.sideNav"></span>
-                  <span class="color-option--item--header mainNav" :class="option.value.mainNav"></span>
+                  <span
+                    class="color-option--item--header sideNav"
+                    :class="option.value.sideNav"
+                  ></span>
+                  <span
+                    class="color-option--item--header mainNav"
+                    :class="option.value.mainNav"
+                  ></span>
                   <span class="sideMenu" :class="option.value.sideManu"></span>
                 </span>
               </label>

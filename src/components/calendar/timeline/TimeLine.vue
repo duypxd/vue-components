@@ -1,13 +1,16 @@
 <template>
   <div>
     <div>
-      <TimeLinePreview :previewData="timeline" @activePreviewDay="changeActiveDay"/>
+      <TimeLinePreview
+        :preview-data="timeline"
+        @activePreviewDay="changeActiveDay"
+      />
     </div>
     <div>
-      <TimeLineHeader class="timeline-preview-header"/>
+      <TimeLineHeader class="timeline-preview-header" />
     </div>
     <div>
-      <TimeLineBody :list="timeline[selectedDay]"/>
+      <TimeLineBody :list="timeline[selectedDay]" />
     </div>
   </div>
 </template>
@@ -22,11 +25,11 @@ export default {
     TimeLineBody,
     TimeLinePreview
   },
-  data() {
-    return { selectedDay: "" };
-  },
   props: {
     timeline: Object
+  },
+  data() {
+    return { selectedDay: "" };
   },
   methods: {
     changeActiveDay(day) {

@@ -3,13 +3,16 @@
     <v-tab
       v-for="tab in tabs"
       :key="tab.id"
-      @change="$emit('getTickets', {type: 'All', key: tab.key, value: tab.value})"
-    >{{tab.name}}</v-tab>
+      @change="
+        $emit('getTickets', { type: 'All', key: tab.key, value: tab.value })
+      "
+      >{{ tab.name }}</v-tab
+    >
     <v-tab-item v-for="item in tabs" :key="item.id">
       <TableTickets
-        :itemsTickets="itemsTickets"
-        :isLoading="isLoading"
-        :keyGroup="keyGroup"
+        :items-tickets="itemsTickets"
+        :is-loading="isLoading"
+        :key-group="keyGroup"
         @updateTickets="evt => $emit('updateTickets', evt)"
         @removeTickets="evt => $emit('removeTickets', evt)"
         @dragAndDropRows="evt => $emit('dragAndDropRows', evt)"

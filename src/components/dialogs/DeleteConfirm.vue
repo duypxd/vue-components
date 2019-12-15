@@ -2,11 +2,11 @@
   <v-dialog :value="isShow" width="500" @input="$emit('cancel')">
     <v-card>
       <v-card-title>
-        <span class="headline">{{title}}</span>
+        <span class="headline">{{ title }}</span>
       </v-card-title>
       <v-divider></v-divider>
       <div class="pa-3 ml-3">
-        <span class="body-2">{{messageConfirm}}</span>
+        <span class="body-2">{{ messageConfirm }}</span>
       </div>
       <v-card-actions>
         <v-spacer></v-spacer>

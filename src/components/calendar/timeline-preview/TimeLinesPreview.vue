@@ -2,8 +2,8 @@
   <div>
     <TimeLinePreviewHeader
       :type="type"
-      :weekYear="weekYear"
-      :monthYear="monthYear"
+      :week-year="weekYear"
+      :month-year="monthYear"
       @changeType="change"
       @changeWeekYear="changeWeekOfYear"
       @changeMonthYear="changeMonthOfYear"
@@ -11,10 +11,10 @@
     <v-row no-gutters class="mt-3 preview-list flex-nowrap">
       <v-col v-for="day in dayList" :key="day" class="preview-card">
         <TimeLinePreview
-          @activeCard="activePreview(day)"
-          :timeLine="previewData[day]"
-          :isActive="activePreviewIndex === day"
+          :time-line="previewData[day]"
+          :is-active="activePreviewIndex === day"
           :date="day"
+          @activeCard="activePreview(day)"
         />
       </v-col>
     </v-row>
@@ -46,21 +46,6 @@ export default {
       type: 1,
       activePreviewIndex: null
     };
-  },
-  methods: {
-    activePreview(day) {
-      this.activePreviewIndex = day;
-      this.$emit("activePreviewDay", day);
-    },
-    change(type) {
-      this.type = type;
-    },
-    changeWeekOfYear({ week, year }) {
-      this.weekYear = { week, year };
-    },
-    changeMonthOfYear({ month, year }) {
-      this.monthYear = { month, year };
-    }
   },
   computed: {
     dayList() {
@@ -95,6 +80,21 @@ export default {
       }
       // month
       return st.add(1, "month").add(-1, "day");
+    }
+  },
+  methods: {
+    activePreview(day) {
+      this.activePreviewIndex = day;
+      this.$emit("activePreviewDay", day);
+    },
+    change(type) {
+      this.type = type;
+    },
+    changeWeekOfYear({ week, year }) {
+      this.weekYear = { week, year };
+    },
+    changeMonthOfYear({ month, year }) {
+      this.monthYear = { month, year };
     }
   }
 };

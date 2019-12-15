@@ -32,7 +32,7 @@ export default new Vuex.Store({
     gettersGlobal,
     // Component
     tickets,
-    timeline,
+    timeline
   },
   strict: debug,
   plugins: debug ? [createLogger()] : []

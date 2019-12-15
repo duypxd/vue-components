@@ -1,7 +1,10 @@
 <template>
   <div>
     <div>
-      <TimeLinePreview :previewData="timeLineConvert" @activePreviewDay="changeActiveDay" />
+      <TimeLinePreview
+        :preview-data="timeLineConvert"
+        @activePreviewDay="changeActiveDay"
+      />
     </div>
     <div>
       <TimeLineHeader class="timeline-preview-header" />
@@ -61,14 +64,14 @@ export default {
       return map;
     }
   },
+  mounted() {
+    this.getDataTimeLine();
+  },
   methods: {
     ...mapActions("timeline", ["getDataTimeLine"]),
     changeActiveDay(day) {
       this.selectedDay = day;
     }
-  },
-  mounted() {
-    this.getDataTimeLine();
   }
 };
 </script>

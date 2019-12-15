@@ -1,6 +1,6 @@
 <template>
   <div class="text-xs-center">
-    <v-dialog :value="isShow" @input="$emit('cancel')" width="750" persistent>
+    <v-dialog :value="isShow" width="750" persistent @input="$emit('cancel')">
       <div class="primary">
         <v-row justify="center" align="center" no-gutters class="pa-3">
           <div class="title font-weight-regular white--text">Category List</div>
@@ -12,18 +12,23 @@
       </div>
       <v-card>
         <SlickTable
-          @update:pagination="updatePagination"
           :totals="totals"
           :items="category"
           :headers="headers"
           :loading="isLoading"
+          @update:pagination="updatePagination"
         >
           <template slot="cell" slot-scope="props">
             <component
               :is="getDisplayComponent(props.column.name)"
               :column="props.column"
-              :dataRow="props.dataRow"
-              @remove="removeCategory({id: $event, matterId: $route.params.projectId})"
+              :data-row="props.dataRow"
+              @remove="
+                removeCategory({
+                  id: $event,
+                  matterId: $route.params.projectId
+                })
+              "
               @update="update(props.column.name, props.dataRow.id, $event)"
             />
           </template>
@@ -41,7 +46,7 @@
         </v-card-actions>
       </v-card>
     </v-dialog>
-    <AddCategory :dialogColor="dialogColor" @cancel="dialogColor = false" />
+    <AddCategory :dialog-color="dialogColor" @cancel="dialogColor = false" />
   </div>
 </template>
 <script>

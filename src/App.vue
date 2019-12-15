@@ -9,10 +9,10 @@
         </div>
       </v-content>
       <v-navigation-drawer
+        v-model="rightDrawer"
         class="setting-drawer"
         temporary
         right
-        v-model="rightDrawer"
         hide-overlay
         fixed
       >
@@ -44,13 +44,9 @@ export default {
   computed: {
     ...mapGetters("theme", ["themeColor", "isDark"])
   },
-  methods: {
-    ...mapActions("members", ["getDataMembersGlobal"]),
-    ...mapActions("gettersGlobal", ["getDataGettersGlobal"]),
-    openThemeSettings() {
-      this.$vuetify.goTo(0);
-      this.rightDrawer = !this.rightDrawer;
-    }
+  mounted() {
+    this.getDataMembersGlobal();
+    this.getDataGettersGlobal();
   },
   created() {
     window.getApp = this;
@@ -60,9 +56,13 @@ export default {
     ].base;
     this.$vuetify.theme.dark = this.isDark === "dark";
   },
-  mounted() {
-    this.getDataMembersGlobal();
-    this.getDataGettersGlobal();
+  methods: {
+    ...mapActions("members", ["getDataMembersGlobal"]),
+    ...mapActions("gettersGlobal", ["getDataGettersGlobal"]),
+    openThemeSettings() {
+      this.$vuetify.goTo(0);
+      this.rightDrawer = !this.rightDrawer;
+    }
   }
 };
 </script>

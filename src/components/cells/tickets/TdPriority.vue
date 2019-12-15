@@ -1,24 +1,38 @@
 <template>
   <td>
-    <v-chip small style="width: 100px" :color="'#'+nameCustom.color" text-color="white">
+    <v-chip
+      small
+      style="width: 100px"
+      :color="'#' + nameCustom.color"
+      text-color="white"
+    >
       <v-menu
-        style="width: 130px"
         v-model="menu"
+        style="width: 130px"
         transition="scale-transition"
         offset-y
         :close-on-content-click="false"
       >
         <template v-slot:activator="{ on }">
-          <span v-on="on" class="name">{{ nameCustom.name }}</span>
+          <span class="name" v-on="on">{{ nameCustom.name }}</span>
         </template>
         <v-list>
-          <v-row no-gutters v-for="(item, index) in priority" :key="index" class="ma-2">
+          <v-row
+            v-for="(item, index) in priority"
+            :key="index"
+            no-gutters
+            class="ma-2"
+          >
             <v-btn
               class="px-2 white--text text-capitalize"
               small
-              :color="'#'+item.color"
-              @click="$emit('update', item.id); menu = false"
-            >{{ item.id }}: {{ item.name }}</v-btn>
+              :color="'#' + item.color"
+              @click="
+                $emit('update', item.id);
+                menu = false;
+              "
+              >{{ item.id }}: {{ item.name }}</v-btn
+            >
           </v-row>
         </v-list>
       </v-menu>
@@ -28,15 +42,15 @@
 <script>
 import { priority } from "../../../config";
 export default {
+  props: {
+    dataRow: Object,
+    column: Object
+  },
   data() {
     return {
       priority,
       menu: false
     };
-  },
-  props: {
-    dataRow: Object,
-    column: Object
   },
   computed: {
     nameCustom() {

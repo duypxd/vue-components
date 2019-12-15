@@ -2,15 +2,15 @@
   <v-row no-gutters>
     <slot name="section" :items="membersJoin"></slot>
     <MenuMembersListSearch
-      @select="$emit('select', $event)"
       :members_golbal="membersGolbalCustom"
       :title="title"
-      :labelSearch="labelSearch"
+      :label-search="labelSearch"
       :name="name"
       :path="path"
-      :keySearch="keySearch"
+      :key-search="keySearch"
+      @select="$emit('select', $event)"
     >
-      <template slot="item" slot-scope="{item}">
+      <template slot="item" slot-scope="{ item }">
         <slot name="item" :item="item"></slot>
       </template>
     </MenuMembersListSearch>
@@ -25,7 +25,7 @@ export default {
   },
   props: {
     membersOption: Array,
-    members_golbal: Array,
+    membersGolbal: Array,
     title: String,
     labelSearch: String,
     name: String,

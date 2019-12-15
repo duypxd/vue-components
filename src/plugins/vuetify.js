@@ -15,7 +15,7 @@ const colorGlobal = {
 
 export default new Vuetify({
   icons: {
-    iconfont: "md", // "mdi" || "mdiSvg" || "md" || "fa" || "fa4"
+    iconfont: "md" // "mdi" || "mdiSvg" || "md" || "fa" || "fa4"
   },
   theme: {
     themes: {
@@ -24,4 +24,4 @@ export default new Vuetify({
     }
   },
   customProperties: true
-})
+});

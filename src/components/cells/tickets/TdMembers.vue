@@ -3,10 +3,10 @@
     <MenuListMembers
       style="flex-wrap: unset;"
       title="List members"
-      :membersOption="dataRow.members"
+      :members-option="dataRow.members"
       :members_golbal="members_global"
       name="members"
-      keySearch="name"
+      key-search="name"
       @select="$emit('update', $event)"
     />
   </td>

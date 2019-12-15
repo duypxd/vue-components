@@ -1,7 +1,13 @@
 <template>
   <div>
     <v-list dense expand>
-      <v-list-item ripple="ripple" rel="noopener" v-for="(v, i) in items" :key="i" :to="v.path">
+      <v-list-item
+        v-for="(v, i) in items"
+        :key="i"
+        ripple="ripple"
+        rel="noopener"
+        :to="v.path"
+      >
         <v-list-item-action>
           <v-icon>{{ v.icon }}</v-icon>
         </v-list-item-action>

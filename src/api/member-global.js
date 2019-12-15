@@ -5,5 +5,5 @@ async function getDataMembersGlobal() {
 }
 
 export default {
-  getDataMembersGlobal,
+  getDataMembersGlobal
 };

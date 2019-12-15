@@ -1,10 +1,12 @@
 <template>
   <div class="text-xs-center">
-    <v-dialog :value="isShow" @input="cancel" width="500" persistent>
+    <v-dialog :value="isShow" width="500" persistent @input="cancel">
       <v-card>
         <div class="primary">
           <v-row justify="center" align="center" class="pa-3">
-            <div class="title font-weight-regular white--text pa-2">Create New Tickets</div>
+            <div class="title font-weight-regular white--text pa-2">
+              Create New Tickets
+            </div>
             <v-spacer></v-spacer>
             <v-btn class="ma-0" icon @click="cancel">
               <v-icon color="white">close</v-icon>
@@ -12,11 +14,11 @@
           </v-row>
         </div>
         <v-divider></v-divider>
-        <v-form class="pa-3" ref="form" lazy-validation>
+        <v-form ref="form" class="pa-3" lazy-validation>
           <v-row no-gutters class="my-1">
             <v-text-field
-              class="py-1"
               v-model="title_ticket"
+              class="py-1"
               :rules="[v => !!v || 'This field is required']"
               label="Title"
               required
@@ -36,12 +38,12 @@
                 <v-chip :key="index">
                   <v-avatar left>
                     <UserAvatar
-                      :avatarSize="32"
-                      :imageUrl="(item || {}).avatar"
+                      :avatar-size="32"
+                      :image-url="(item || {}).avatar"
                       :name="item.name || client"
                     />
                   </v-avatar>
-                  {{item.name || client}}
+                  {{ item.name || client }}
                 </v-chip>
               </template>
             </v-combobox>
@@ -55,10 +57,17 @@
               item-value="id"
               item-text="name"
               :rules="[v => !!v || 'This field is required']"
-              :disabled="keyGroup && keyGroup.keyName === 'Priority' ? true : false"
+              :disabled="
+                keyGroup && keyGroup.keyName === 'Priority' ? true : false
+              "
             >
               <template v-slot:selection="{ item, index }">
-                <v-chip v-if="index === 0" :color="'#'+item.color" small class="white--text">
+                <v-chip
+                  v-if="index === 0"
+                  :color="'#' + item.color"
+                  small
+                  class="white--text"
+                >
                   <span>{{ item.name }}</span>
                 </v-chip>
               </template>
@@ -73,10 +82,17 @@
               item-value="id"
               item-text="name"
               :rules="[v => !!v || 'This field is required']"
-              :disabled="keyGroup && keyGroup.keyName === 'Urgency' ? true : false"
+              :disabled="
+                keyGroup && keyGroup.keyName === 'Urgency' ? true : false
+              "
             >
               <template v-slot:selection="{ item, index }">
-                <v-chip v-if="index === 0" :color="'#'+item.color" small class="white--text">
+                <v-chip
+                  v-if="index === 0"
+                  :color="'#' + item.color"
+                  small
+                  class="white--text"
+                >
                   <span>{{ item.name }}</span>
                 </v-chip>
               </template>
@@ -91,10 +107,17 @@
               item-value="id"
               item-text="name"
               :rules="[v => !!v || 'This field is required']"
-              :disabled="keyGroup && keyGroup.keyName === 'Status' ? true : false"
+              :disabled="
+                keyGroup && keyGroup.keyName === 'Status' ? true : false
+              "
             >
               <template v-slot:selection="{ item, index }">
-                <v-chip v-if="index === 0" :color="item.color" small class="white--text">
+                <v-chip
+                  v-if="index === 0"
+                  :color="item.color"
+                  small
+                  class="white--text"
+                >
                   <span>{{ item.name }}</span>
                 </v-chip>
               </template>
@@ -109,10 +132,17 @@
               item-value="id"
               item-text="name"
               :rules="[v => !!v || 'This field is required']"
-              :disabled="keyGroup && keyGroup.keyName === 'Category' ? true : false"
+              :disabled="
+                keyGroup && keyGroup.keyName === 'Category' ? true : false
+              "
             >
               <template v-slot:selection="{ item, index }">
-                <v-chip v-if="index === 0" :color="`#`+item.color" small class="white--text">
+                <v-chip
+                  v-if="index === 0"
+                  :color="`#` + item.color"
+                  small
+                  class="white--text"
+                >
                   <span>{{ item.name }}</span>
                 </v-chip>
               </template>

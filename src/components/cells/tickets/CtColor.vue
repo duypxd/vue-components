@@ -1,6 +1,8 @@
-<template >
+<template>
   <td>
-    <v-chip :color="`#`+dataRow.color" text-color="white">{{`#`+dataRow.color}}</v-chip>
+    <v-chip :color="`#` + dataRow.color" text-color="white">{{
+      `#` + dataRow.color
+    }}</v-chip>
   </td>
 </template>
 <script>

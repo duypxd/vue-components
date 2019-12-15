@@ -2,15 +2,19 @@
   <v-card
     class="preview-container"
     :dark="!!isActive"
-    :class="{'active':!!isActive, 'weekend': isWeekend}"
-    :color="isActive ? 'primary':`transparent`"
+    :class="{ active: !!isActive, weekend: isWeekend }"
+    :color="isActive ? 'primary' : `transparent`"
     @click="$emit('activeCard')"
   >
     <v-card-text class="preview-inner px-0 pt-2 pb-3">
       <div class="card-container">
-        <v-row no-gutters class="title-place px-2 py-2 ma-1" justify="space-between">
-          <span class="headline">{{days}}</span>
-          <span class="caption">{{day}}</span>
+        <v-row
+          no-gutters
+          class="title-place px-2 py-2 ma-1"
+          justify="space-between"
+        >
+          <span class="headline">{{ days }}</span>
+          <span class="caption">{{ day }}</span>
         </v-row>
         <TimeLineBody :list="timeLine" />
       </div>

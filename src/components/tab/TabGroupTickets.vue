@@ -1,11 +1,20 @@
 <template>
   <div>
     <v-tabs v-model="tabsModel" fixed-tabs background-color="primary">
-      <v-tab v-for="item in statusTickets" :key="item.id" @change="changeTabs(item)">{{ item.name }}</v-tab>
+      <v-tab
+        v-for="item in statusTickets"
+        :key="item.id"
+        @change="changeTabs(item)"
+        >{{ item.name }}</v-tab
+      >
     </v-tabs>
     <v-tabs-items v-model="tabsModel">
       <v-tab-item v-for="item in statusTickets" :key="item.id">
-        <slot name="group" :dataKeyGroup="dataKeyGroup(item.key)" :keyName="item.name"/>
+        <slot
+          name="group"
+          :dataKeyGroup="dataKeyGroup(item.key)"
+          :keyName="item.name"
+        />
       </v-tab-item>
     </v-tabs-items>
   </div>
@@ -25,6 +34,11 @@ export default {
   computed: {
     ...mapGetters("gettersGlobal", ["statusTickets"]),
     ...mapGetters("tickets/category", ["category"])
+  },
+  watch: {
+    statusTickets(val) {
+      this.changeTabs({ id: 1000, key: "status" });
+    }
   },
   methods: {
     dataKeyGroup(type) {
@@ -47,11 +61,6 @@ export default {
           keyGroup: item.key
         });
       }
-    }
-  },
-  watch: {
-    statusTickets(val) {
-      this.changeTabs({ id: 1000, key: "status" });
     }
   }
 };

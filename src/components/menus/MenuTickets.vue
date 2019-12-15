@@ -15,12 +15,15 @@
     </v-list>
 
     <div class="ml-2 font-weight-bold body-2">Ticket Status</div>
-    <div class="ma-2" v-for="(item, index) in statusTickets" :key="index">
+    <div v-for="(item, index) in statusTickets" :key="index" class="ma-2">
       <v-row justify="space-between">
-        <span class="caption ml-3">{{item.name}}</span>
-        <span class="caption mr-3">{{item.value}}%</span>
+        <span class="caption ml-3">{{ item.name }}</span>
+        <span class="caption mr-3">{{ item.value }}%</span>
       </v-row>
-      <v-progress-linear :color="item.color" :value="item.value"></v-progress-linear>
+      <v-progress-linear
+        :color="item.color"
+        :value="item.value"
+      ></v-progress-linear>
     </div>
   </v-list>
 </template>

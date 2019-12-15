@@ -5,9 +5,9 @@
       :headers="headers"
       :loading="isLoading"
       :totals="itemsTickets.totals"
-      :itemsPerPage="20"
+      :items-per-page="20"
       :pagination.sync="pagination"
-      :indexGroup="indexGroup"
+      :index-group="indexGroup"
       :group="group"
       @dragAndDropRows="resp => $emit('dragAndDropRows', resp)"
     >
@@ -15,14 +15,21 @@
         <component
           :is="getDisplayComponent(props.column.name)"
           :column="props.column"
-          :dataRow="props.dataRow"
+          :data-row="props.dataRow"
           @update="update(props.column.name, props.dataRow.id, $event)"
-          @remove="openDialogDelete({id: $event})"
+          @remove="openDialogDelete({ id: $event })"
         />
       </template>
       <template slot="footer">
         <div>
-          <v-btn outlined color="primary" @click="isShow = true; stageGroup = keyGroup">
+          <v-btn
+            outlined
+            color="primary"
+            @click="
+              isShow = true;
+              stageGroup = keyGroup;
+            "
+          >
             <span>Add new</span>
             <v-icon class="pl-1">add</v-icon>
           </v-btn>
@@ -30,16 +37,22 @@
       </template>
     </SlickGridTable>
     <DeleteConfirm
-      :isShow="isShowModalDelete"
-      @cancel="isShowModalDelete = false"
-      @remove="$emit('removeTickets', itemDelete); isShowModalDelete = false"
+      :is-show="isShowModalDelete"
       title="Confirm delete"
-      messageConfirm="Are you sure want to delete this item?"
+      message-confirm="Are you sure want to delete this item?"
+      @cancel="isShowModalDelete = false"
+      @remove="
+        $emit('removeTickets', itemDelete);
+        isShowModalDelete = false;
+      "
     />
     <AddTickets
-      :isShow="isShow"
-      @closeModal="isShow = false; stageGroup={}"
-      :keyGroup="stageGroup"
+      :is-show="isShow"
+      :key-group="stageGroup"
+      @closeModal="
+        isShow = false;
+        stageGroup = {};
+      "
     />
   </div>
 </template>
@@ -167,6 +180,9 @@ export default {
       isShowCreate: false
     };
   },
+  mounted() {
+    this.stageGroup = this.keyGroup;
+  },
   methods: {
     getDisplayComponent(columnName) {
       if (columnName === "actions") {
@@ -219,9 +235,6 @@ export default {
       this.isShowModalDelete = true;
       this.itemDelete = val;
     }
-  },
-  mounted() {
-    this.stageGroup = this.keyGroup;
   }
 };
 </script>

@@ -22,7 +22,6 @@
 <script>
 import VuePerfectScrollbar from "vue-perfect-scrollbar";
 import MenuRouter from "./MenuRouter";
-import { mapGetters, mapActions } from "vuex";
 
 export default {
   components: {

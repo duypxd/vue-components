@@ -7,7 +7,7 @@ const state = {
 };
 
 const getters = {
-  dataTickets: (state, _, __, rootGetters) => {
+  dataTickets: state => {
     // if (state.dataTickets.id === 9999) {
     //   return state.dataTickets;
     // } else {

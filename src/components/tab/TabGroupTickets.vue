@@ -37,7 +37,9 @@ export default {
   },
   watch: {
     statusTickets(val) {
-      this.changeTabs({ id: 1000, key: "status" });
+      if (val) {
+        this.changeTabs({ id: 1000, key: "status" });
+      }
     }
   },
   methods: {

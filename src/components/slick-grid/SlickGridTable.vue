@@ -82,7 +82,7 @@ export default {
           for (var i = 1; i < tableRows.length; i++) {
             tableRows[i]
               .querySelectorAll("td")
-              [event.oldIndex].classList.add("sorting");
+              event.oldIndex.classList.add("sorting");
           }
         },
         onChange(event) {
@@ -102,17 +102,17 @@ export default {
               oldPos.classList.add("sort-right");
               thisRow
                 .querySelectorAll("td")
-                [event.newIndex].classList.add("sort-left");
+                event.newIndex.classList.add("sort-left");
             } else {
               oldPos.classList.add("sort-left");
               thisRow
                 .querySelectorAll("td")
-                [event.newIndex].classList.add("sort-right");
+                event.newIndex.classList.add("sort-right");
             }
             _self.setNewPos(oldPos, newPos, cells, event.newIndex, thisRow);
           }
         },
-        onEnd(event) {
+        onEnd() {
           const tableRows = _self.$refs.extendSlick.$el.querySelectorAll("tr");
           for (var i = 1; i < tableRows.length; i++) {
             tableRows[i]
@@ -121,7 +121,7 @@ export default {
           }
           var sorted = tableRows[0].querySelectorAll("th");
           const result = [];
-          for (var i = 0; i < sorted.length; i++) {
+          for (let i = 0; i < sorted.length; i++) {
             var item = sorted[i];
             var resp = _self.headers.find(x => x.text === item.textContent);
             result.push(resp);

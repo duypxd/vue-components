@@ -2,7 +2,7 @@
   <v-row no-gutters>
     <slot name="section" :items="membersJoin"></slot>
     <MenuMembersListSearch
-      :members_golbal="membersGolbalCustom"
+      :members_golbal="members_golbalCustom"
       :title="title"
       :label-search="labelSearch"
       :name="name"
@@ -25,7 +25,7 @@ export default {
   },
   props: {
     membersOption: Array,
-    membersGolbal: Array,
+    members_golbal: Array,
     title: String,
     labelSearch: String,
     name: String,
@@ -38,7 +38,7 @@ export default {
         (this.membersOption || []).includes(x.id)
       );
     },
-    membersGolbalCustom() {
+    members_golbalCustom() {
       let items = JSON.parse(JSON.stringify(this.members_golbal || []));
       let result = items.map(x => {
         if ((this.membersOption || []).includes(x.id)) {

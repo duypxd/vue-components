@@ -60,7 +60,7 @@ export default {
   },
   props: {
     membersOption: Array,
-    membersGolbal: Array,
+    members_golbal: Array,
     name: String,
     path: [Object, Array],
     keySearch: String,

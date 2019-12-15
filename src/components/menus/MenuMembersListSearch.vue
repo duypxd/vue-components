@@ -42,7 +42,7 @@
 <script>
 export default {
   props: {
-    membersGolbal: Array,
+    members_golbal: Array,
     labelSearch: String,
     title: String,
     name: String,
@@ -56,7 +56,7 @@ export default {
   },
   computed: {
     membersSearch() {
-      const filter = this.members_golbal.filter(
+      const filter = (this.members_golbal || []).filter(
         x =>
           (x[this.keySearch] || "")
             .toLowerCase()

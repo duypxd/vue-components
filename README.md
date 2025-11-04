@@ -1,1 +1,1 @@
-### See [Demo](https://xduy-demo-vuetify.netlify.app/dashboard).
+### See [Demo](https://xduy-demo-vuetify.netlify.app/).
